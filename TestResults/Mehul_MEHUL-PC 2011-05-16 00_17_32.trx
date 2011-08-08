@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c36ada26-f703-4815-ab01-c432d6407467" name="Mehul@MEHUL-PC 2011-05-16 00:17:32" runUser="Mehul-PC\Mehul" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c24e055d-6e81-4da8-bf23-69164454661b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mehul_MEHUL-PC 2011-05-16 00_17_32">
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services\bin\Debug\ZinOS.Services.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\Ninject-2.2.0.0-release-net-4.0\Ninject.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services.Implementation\bin\Debug\ZinOS.Services.Implementation.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Definitions\bin\Debug\ZinOS.Repositories.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Implementation\bin\Debug\ZinOS.Repositories.Implementation.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-16T00:17:32.6736692+01:00" queuing="2011-05-16T00:17:36.7309013+01:00" start="2011-05-16T00:17:37.0479194+01:00" finish="2011-05-16T00:18:01.5653217+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetRootDirectories" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="dcdf7aff-19c6-1309-3ca5-1dbb0749a535">
+      <Execution id="c8929749-3a93-40e0-af4d-43795a12d12d" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DesktopFileSystemTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetRootDirectories" />
+    </UnitTest>
+    <UnitTest name="Metadata" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="57fba3c0-06b2-eff5-fc77-ba6d53912bd6">
+      <Execution id="49edb7f7-30b9-4dfe-98ab-e6cc5a73e2d9" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DropboxServiceTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Metadata" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" executionId="49edb7f7-30b9-4dfe-98ab-e6cc5a73e2d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" executionId="c8929749-3a93-40e0-af4d-43795a12d12d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="49edb7f7-30b9-4dfe-98ab-e6cc5a73e2d9" testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" testName="Metadata" computerName="MEHUL-PC" duration="00:00:20.1676790" startTime="2011-05-16T00:17:37.2169291+01:00" endTime="2011-05-16T00:17:59.3531952+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49edb7f7-30b9-4dfe-98ab-e6cc5a73e2d9">
+      <Output>
+        <StdOut>{"referral_link": "https://www.dropbox.com/referrals/NTk5ODIyMzk", "display_name": "Mehul Ir\u00e1", "uid": 998223, "country": "PT", "quota_info": {"shared": 2158426644, "quota": 3489660928, "normal": 432934117}, "email": "mehulira@gmail.com"}</StdOut>
+        <DebugTrace>QTAgent32.exe Information: 0 : DotNetOpenAuth, Version=3.4.6.10357, Culture=neutral, PublicKeyToken=2780ccd10d57b246 (official)
+QTAgent32.exe Information: 0 : Reporting will use isolated storage with scope: User, Domain, Assembly
+QTAgent32.exe Information: 0 : Preparing to send AccessProtectedResourceRequest (1.0.1) message.
+QTAgent32.exe Information: 0 : Binding element DotNetOpenAuth.OAuth.ChannelElements.OAuthHttpMethodBindingElement applied to message.
+QTAgent32.exe Information: 0 : Binding element DotNetOpenAuth.Messaging.Bindings.StandardReplayProtectionBindingElement applied to message.
+QTAgent32.exe Information: 0 : Binding element DotNetOpenAuth.Messaging.Bindings.StandardExpirationBindingElement applied to message.
+QTAgent32.exe Information: 0 : Applying secrets to message to prepare for signing or signature verification.
+QTAgent32.exe Information: 0 : Signing AccessProtectedResourceRequest message using HMAC-SHA1.
+QTAgent32.exe Information: 0 : Constructed signature base string: GET&amp;https%3A%2F%2Fapi.dropbox.com%2F0%2Faccount%2Finfo&amp;oauth_consumer_key%3D6s2j9043ko7rlio%26oauth_nonce%3DfuyU8UwU%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1305501461%26oauth_token%3D67m87nxz3pje90u%26oauth_version%3D1.0
+QTAgent32.exe Information: 0 : Binding element DotNetOpenAuth.OAuth.ChannelElements.SigningBindingElementChain applied to message.
+QTAgent32.exe Information: 0 : HTTP GET https://api.dropbox.com/0/account/info
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c8929749-3a93-40e0-af4d-43795a12d12d" testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" testName="GetRootDirectories" computerName="MEHUL-PC" duration="00:00:00.0007156" startTime="2011-05-16T00:17:59.4091984+01:00" endTime="2011-05-16T00:17:59.4792024+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8929749-3a93-40e0-af4d-43795a12d12d">
+    </UnitTestResult>
+  </Results>
+</TestRun>

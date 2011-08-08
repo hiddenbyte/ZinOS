@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="6629ef78-0a0b-4be1-ad83-9df9e8e02e36" name="Mehul@MEHUL-PC 2011-05-16 21:25:35" runUser="Mehul-PC\Mehul" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c24e055d-6e81-4da8-bf23-69164454661b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mehul_MEHUL-PC 2011-05-16 21_25_35">
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services\bin\Debug\ZinOS.Services.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\Ninject-2.2.0.0-release-net-4.0\Ninject.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services.Implementation\bin\Debug\ZinOS.Services.Implementation.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Definitions\bin\Debug\ZinOS.Repositories.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Implementation\bin\Debug\ZinOS.Repositories.Implementation.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-16T21:25:35.1221053+01:00" queuing="2011-05-16T21:25:48.5468732+01:00" start="2011-05-16T21:25:49.1389070+01:00" finish="2011-05-16T21:26:15.2914029+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetRootDirectories" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="dcdf7aff-19c6-1309-3ca5-1dbb0749a535">
+      <Execution id="9a22b1d8-513d-469d-87f5-ec76bca467af" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DesktopFileSystemTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetRootDirectories" />
+    </UnitTest>
+    <UnitTest name="Metadata" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="57fba3c0-06b2-eff5-fc77-ba6d53912bd6">
+      <Execution id="999734f7-5fef-4834-9349-fe5577922fd7" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DropboxServiceTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Metadata" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" executionId="999734f7-5fef-4834-9349-fe5577922fd7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" executionId="9a22b1d8-513d-469d-87f5-ec76bca467af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="999734f7-5fef-4834-9349-fe5577922fd7" testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" testName="Metadata" computerName="MEHUL-PC" duration="00:00:22.6212022" startTime="2011-05-16T21:25:49.5949331+01:00" endTime="2011-05-16T21:26:14.9053808+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="999734f7-5fef-4834-9349-fe5577922fd7">
+      <Output>
+        <StdOut>Found File: 2011-02-12 - Cópia.zip
+Found File: 2011-02-12.zip
+Found File: 72157625307968707-a2324ff0dbd80fc3.txt
+Found Directory: agap2
+Found Directory: app
+Found Directory: bo_meo
+Found Directory: cv
+Found File: cv-mehulira-pt.odt
+Found File: cv-mehulira-pt.pdf
+Found Directory: dev
+Found Directory: Documentos - Bolsa IPL SAS
+Found Directory: e-books
+Found File: ebooksclub.org__Pro_JavaScript_Techniques__Pro_.pdf
+Found Directory: Games
+Found File: GoogleChromePortable.rar
+Found File: Ideias para projecto e seminário.docx
+Found Directory: ImageSelect
+Found File: index.html
+Found Directory: ISEL
+Found Directory: ISEL - 7ºSemestre
+Found Directory: ISEL - SI
+Found Directory: ISEL-TEAM
+Found Directory: Javacript MVC
+Found File: javascriptMVC.js
+Found Directory: joao
+Found File: jquery-1.4.2.js
+Found Directory: leic-ps
+Found Directory: Photos
+Found Directory: PortableApps
+Found File: pp31666.docx
+Found Directory: PS - 2010.11
+Found Directory: Public
+Found Directory: shared
+Found Directory: SI 2 - SV 0910
+Found File: SI_1011i_Assignment1.zip
+Found Directory: spicy_nights_v2
+Found File: twitter_api_me-1.4-javame.zip
+Found File: Unite Media Player.lnk
+Found Directory: VioletUML</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9a22b1d8-513d-469d-87f5-ec76bca467af" testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" testName="GetRootDirectories" computerName="MEHUL-PC" duration="00:00:00.0007907" startTime="2011-05-16T21:26:14.9603839+01:00" endTime="2011-05-16T21:26:14.9953859+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a22b1d8-513d-469d-87f5-ec76bca467af">
+    </UnitTestResult>
+  </Results>
+</TestRun>

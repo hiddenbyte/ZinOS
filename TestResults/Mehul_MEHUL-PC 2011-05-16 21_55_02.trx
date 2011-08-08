@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b9485f5d-3f32-4d11-8f3e-0cacf72b0a4c" name="Mehul@MEHUL-PC 2011-05-16 21:55:02" runUser="Mehul-PC\Mehul" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c24e055d-6e81-4da8-bf23-69164454661b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mehul_MEHUL-PC 2011-05-16 21_55_02">
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services\bin\Debug\ZinOS.Services.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\Ninject-2.2.0.0-release-net-4.0\Ninject.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services.Implementation\bin\Debug\ZinOS.Services.Implementation.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Definitions\bin\Debug\ZinOS.Repositories.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Implementation\bin\Debug\ZinOS.Repositories.Implementation.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-16T21:55:02.5671974+01:00" queuing="2011-05-16T21:55:07.1644603+01:00" start="2011-05-16T21:55:07.7714950+01:00" finish="2011-05-16T21:55:32.3639017+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Metadata" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="57fba3c0-06b2-eff5-fc77-ba6d53912bd6">
+      <Execution id="da8a81c0-6634-45ce-8beb-5a7e2e48e318" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DropboxServiceTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Metadata" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" executionId="da8a81c0-6634-45ce-8beb-5a7e2e48e318" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="da8a81c0-6634-45ce-8beb-5a7e2e48e318" testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" testName="Metadata" computerName="MEHUL-PC" duration="00:00:20.4408779" startTime="2011-05-16T21:55:08.0155090+01:00" endTime="2011-05-16T21:55:31.7838685+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="da8a81c0-6634-45ce-8beb-5a7e2e48e318">
+      <Output>
+        <StdOut>2011-02-12 - Cópia.zip
+2011-02-12.zip
+72157625307968707-a2324ff0dbd80fc3.txt
++agap2
++app
++bo_meo
++cv
+cv-mehulira-pt.odt
+cv-mehulira-pt.pdf
++dev
++Documentos - Bolsa IPL SAS
++e-books
+ebooksclub.org__Pro_JavaScript_Techniques__Pro_.pdf
++Games
+GoogleChromePortable.rar
+Ideias para projecto e seminário.docx
++ImageSelect
+index.html
++ISEL
++ISEL - 7ºSemestre
++ISEL - SI
++ISEL-TEAM
++Javacript MVC
+javascriptMVC.js
++joao
+jquery-1.4.2.js
++leic-ps
++Photos
++PortableApps
+pp31666.docx
++PS - 2010.11
++Public
++shared
++SI 2 - SV 0910
+SI_1011i_Assignment1.zip
++spicy_nights_v2
+twitter_api_me-1.4-javame.zip
+Unite Media Player.lnk
++VioletUML</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

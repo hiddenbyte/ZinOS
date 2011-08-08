@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="fb7b54af-603d-44c0-ba93-57d4cdcf2f81" name="Mehul@MEHUL-PC 2011-05-17 23:51:13" runUser="Mehul-PC\Mehul" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c24e055d-6e81-4da8-bf23-69164454661b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mehul_MEHUL-PC 2011-05-17 23_51_13">
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services\bin\Debug\ZinOS.Services.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\Ninject-2.2.0.0-release-net-4.0\Ninject.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Common\bin\Debug\ZinOS.Common.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Definitions\bin\Debug\ZinOS.Repositories.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services.Implementation\bin\Debug\ZinOS.Services.Implementation.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Implementation\bin\Debug\ZinOS.Repositories.Implementation.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-17T23:51:13.5507402+01:00" queuing="2011-05-17T23:51:18.0279963+01:00" start="2011-05-17T23:51:18.4130183+01:00" finish="2011-05-17T23:51:48.9157630+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetRootDirectories" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="dcdf7aff-19c6-1309-3ca5-1dbb0749a535">
+      <Execution id="348d66f9-93d9-4cc7-819d-76c75e2ee1e7" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DesktopFileSystemTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetRootDirectories" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" executionId="348d66f9-93d9-4cc7-819d-76c75e2ee1e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="348d66f9-93d9-4cc7-819d-76c75e2ee1e7" testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" testName="GetRootDirectories" computerName="MEHUL-PC" duration="00:00:25.1201130" startTime="2011-05-17T23:51:18.6050293+01:00" endTime="2011-05-17T23:51:46.6486333+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="348d66f9-93d9-4cc7-819d-76c75e2ee1e7">
+      <Output>
+        <StdOut>Root directories for user 1
+local
+	Content (\local)
+	cispremium_installer_x86.exe - \local\cispremium_installer_x86.exe
+	IPLNetWirelessSetupV3.2.exe - \local\IPLNetWirelessSetupV3.2.exe
+	ubuntu-10.10-desktop-i386.iso - \local\ubuntu-10.10-desktop-i386.iso
+	VirtualBox-4.0.4-70112-Win.exe - \local\VirtualBox-4.0.4-70112-Win.exe
+	Visual_Studio2010_Professional_x86_x16-81637.img - \local\Visual_Studio2010_Professional_x86_x16-81637.img
+root
+	Content (\dropbox)
+	2011-02-12 - Cópia.zip - \2011-02-12 - Cópia.zip
+	2011-02-12.zip - \2011-02-12.zip
+	72157625307968707-a2324ff0dbd80fc3.txt - \72157625307968707-a2324ff0dbd80fc3.txt
+	agap2 - \agap2
+	app - \app
+	bo_meo - \bo_meo
+	cv - \cv
+	cv-mehulira-pt.odt - \cv-mehulira-pt.odt
+	cv-mehulira-pt.pdf - \cv-mehulira-pt.pdf
+	dev - \dev
+	Documentos - Bolsa IPL SAS - \Documentos - Bolsa IPL SAS
+	e-books - \e-books
+	ebooksclub.org__Pro_JavaScript_Techniques__Pro_.pdf - \ebooksclub.org__Pro_JavaScript_Techniques__Pro_.pdf
+	Games - \Games
+	GoogleChromePortable.rar - \GoogleChromePortable.rar
+	Ideias para projecto e seminário.docx - \Ideias para projecto e seminário.docx
+	ImageSelect - \ImageSelect
+	index.html - \index.html
+	ISEL - \ISEL
+	ISEL - 7ºSemestre - \ISEL - 7ºSemestre
+	ISEL - SI - \ISEL - SI
+	ISEL-TEAM - \ISEL-TEAM
+	Javacript MVC - \Javacript MVC
+	javascriptMVC.js - \javascriptMVC.js
+	joao - \joao
+	jquery-1.4.2.js - \jquery-1.4.2.js
+	leic-ps - \leic-ps
+	Photos - \Photos
+	PortableApps - \PortableApps
+	pp31666.docx - \pp31666.docx
+	PS - 2010.11 - \PS - 2010.11
+	Public - \Public
+	shared - \shared
+	SI 2 - SV 0910 - \SI 2 - SV 0910
+	SI_1011i_Assignment1.zip - \SI_1011i_Assignment1.zip
+	spicy_nights_v2 - \spicy_nights_v2
+	twitter_api_me-1.4-javame.zip - \twitter_api_me-1.4-javame.zip
+	Unite Media Player.lnk - \Unite Media Player.lnk
+	VioletUML - \VioletUML</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

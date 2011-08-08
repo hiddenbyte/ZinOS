@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d2b4d5fb-0a4f-42af-8dbe-06d42a25c2fc" name="Mehul@MEHUL-PC 2011-05-15 23:54:59" runUser="Mehul-PC\Mehul" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c24e055d-6e81-4da8-bf23-69164454661b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mehul_MEHUL-PC 2011-05-15 23_54_59">
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services\bin\Debug\ZinOS.Services.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\Ninject-2.2.0.0-release-net-4.0\Ninject.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Services.Implementation\bin\Debug\ZinOS.Services.Implementation.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Definitions\bin\Debug\ZinOS.Repositories.Definitions.dll" />
+      <DeploymentItem filename="D:\development\ZinOS\ZinOS_Prototype\ZinOS.Repositories.Implementation\bin\Debug\ZinOS.Repositories.Implementation.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-15T23:54:59.5662759+01:00" queuing="2011-05-15T23:55:03.7745166+01:00" start="2011-05-15T23:55:04.2455435+01:00" finish="2011-05-15T23:56:31.5415366+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="2" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="MEHUL-PC" outcome="Error" timestamp="2011-05-15T23:56:31.4905337+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetRootDirectories" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="dcdf7aff-19c6-1309-3ca5-1dbb0749a535">
+      <Execution id="86f708c3-6a45-4a8c-a77c-831dccd2ee36" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DesktopFileSystemTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetRootDirectories" />
+    </UnitTest>
+    <UnitTest name="Metadata" storage="d:\development\zinos\zinos_prototype\zinossercicestest\bin\debug\zinossercicestest.dll" id="57fba3c0-06b2-eff5-fc77-ba6d53912bd6">
+      <Execution id="bf2d37d2-3551-4355-a886-e39a5092bfe1" />
+      <TestMethod codeBase="D:/development/ZinOS/ZinOS_Prototype/ZinOsSercicesTest/bin/Debug/ZinOsSercicesTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ZinOsSercicesTest.DropboxServiceTest, ZinOsSercicesTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Metadata" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" executionId="bf2d37d2-3551-4355-a886-e39a5092bfe1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" executionId="86f708c3-6a45-4a8c-a77c-831dccd2ee36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="bf2d37d2-3551-4355-a886-e39a5092bfe1" testId="57fba3c0-06b2-eff5-fc77-ba6d53912bd6" testName="Metadata" computerName="MEHUL-PC" duration="00:01:26.9079709" startTime="2011-05-15T23:55:04.6085643+01:00" endTime="2011-05-15T23:56:31.5165352+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf2d37d2-3551-4355-a886-e39a5092bfe1">
+    </UnitTestResult>
+    <UnitTestResult executionId="86f708c3-6a45-4a8c-a77c-831dccd2ee36" testId="dcdf7aff-19c6-1309-3ca5-1dbb0749a535" testName="GetRootDirectories" computerName="MEHUL-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86f708c3-6a45-4a8c-a77c-831dccd2ee36">
+    </UnitTestResult>
+  </Results>
+</TestRun>
