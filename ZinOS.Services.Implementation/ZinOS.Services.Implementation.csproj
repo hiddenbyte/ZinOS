@@ -43,10 +43,6 @@
     <Reference Include="AppLimit.Common.Toolkit">
       <HintPath>SharpBox-1.0.3-261\AppLimit.Common.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth, Version=3.4.6.10357, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\DotNetOpenAuth.dll</HintPath>
-    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\DotNetZip-v1.9\Release\Ionic.Zip.dll</HintPath>
     </Reference>
