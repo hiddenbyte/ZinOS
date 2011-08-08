@@ -24,7 +24,7 @@ namespace ZinOS.Services.Implementation
             token = user.DropboxUserInformation.Token;
             tokenSecret = user.DropboxUserInformation.TokenSecret;
 
-            return !user.DropboxUserInformation.IsEmpty();
+            return user.DropboxUserInformation.HasValue;
         }
 
         public void SetDropboxRequestToken(int userId, string token, string tokenSecret)

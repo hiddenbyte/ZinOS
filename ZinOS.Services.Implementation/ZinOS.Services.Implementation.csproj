@@ -76,6 +76,7 @@
     <Compile Include="UserImpl.cs" />
     <Compile Include="ZinOSAppServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZinOSDesktopDropboxAccountImpl.cs" />
     <Compile Include="ZinOSDesktopServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>

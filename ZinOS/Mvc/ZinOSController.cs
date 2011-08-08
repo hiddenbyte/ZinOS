@@ -50,7 +50,7 @@ namespace ZinOS.Mvc
                 return;
             }
 
-            filterContext.HttpContext.Response.Redirect("/");
+            filterContext.Result = new RedirectResult("/");
         }
     }
 

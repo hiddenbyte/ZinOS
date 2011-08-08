@@ -7,9 +7,9 @@ namespace ZinOS.Areas.Desktop.Controllers
 {
     public class ZinOSAppController : Controller
     {
-        private readonly ZinOSAppService _zinOSAppService;
+        private readonly IZinOSAppService _zinOSAppService;
 
-        public ZinOSAppController(ZinOSAppService zinOSAppService)
+        public ZinOSAppController(IZinOSAppService zinOSAppService)
         {
             _zinOSAppService = zinOSAppService;
         }

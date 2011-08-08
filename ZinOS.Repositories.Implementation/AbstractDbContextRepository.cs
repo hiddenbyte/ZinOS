@@ -9,17 +9,17 @@ namespace ZinOS.Repositories.Implementation
 {
     public abstract class AbstractDbContextRepository<TKey, TEntity> : IRepository<TKey, TEntity> where TEntity : class
     {
-        public readonly DbContextUnitOfWorkFactory _unitOfWorkFactory;
+        public readonly DbContextUnitOfWorkFactory UnitOfWorkFactory;
 
-        public AbstractDbContextRepository(DbContextUnitOfWorkFactory unitOfWorkFactory) 
+        protected AbstractDbContextRepository(DbContextUnitOfWorkFactory unitOfWorkFactory) 
         {
-            _unitOfWorkFactory = unitOfWorkFactory;
+            UnitOfWorkFactory = unitOfWorkFactory;
         }
 
         protected ZinOSDbContext CurrentContext
         {
             get {
-                return _unitOfWorkFactory.CurrentContext;
+                return UnitOfWorkFactory.CurrentContext;
             }
         }
 
@@ -64,6 +64,11 @@ namespace ZinOS.Repositories.Implementation
             {
                 return db.Set<TEntity>().ToArray();
             }
+        }
+
+        public virtual bool Exists(TKey key)
+        {
+            return GetByKey(key) != null;
         }
     }
 }

@@ -7,9 +7,9 @@ namespace ZinOS.Controllers
 {
     public class DevelopersController : ZinOSController
     {
-        private readonly ZinOSAppService _zinOsAppService;
+        private readonly IZinOSAppService _zinOsAppService;
 
-        public DevelopersController(ZinOSAppService zinOSAppService)
+        public DevelopersController(IZinOSAppService zinOSAppService)
         {
             _zinOsAppService = zinOSAppService;
         }
@@ -85,7 +85,17 @@ namespace ZinOS.Controllers
         [HttpPost]
         public ActionResult UpdateApp(int zinOSAppId, HttpPostedFileBase zinOSAppZipFile)
         {
-            return null;
+            try
+            {
+                _zinOsAppService.Update(CurrentUserId, zinOSAppId, zinOSAppZipFile.InputStream);
+            }
+            catch (ValidationException validationException)
+            {
+                foreach (var error in validationException.Errors)
+                    ModelState.AddModelError(error.ErrorKey, error.ErrorMessage);
+            }
+
+            return ModelState.IsValid ? RedirectToAction("AppSubmited") as ActionResult : View();
         }
     }
 }

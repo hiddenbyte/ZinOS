@@ -13,7 +13,7 @@ namespace ZinOS.Services.Implementation
     public class ZinOSDesktopServiceImpl : IZinOSDesktopService
     {
         //services
-        private readonly ZinOSAppService _zinOSAppService;
+        private readonly IZinOSAppService _zinOSAppService;
         private readonly IUserDropboxAccountService _userDropboxAccountService;
         private readonly IDesktopFileSystem _desktopFileSystem;
         //repositories
@@ -22,7 +22,7 @@ namespace ZinOS.Services.Implementation
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public ZinOSDesktopServiceImpl(IUserDropboxAccountService userDropboxAccountService,
-            ZinOSAppService zinOSAppService,
+            IZinOSAppService zinOSAppService,
             IDesktopFileSystem desktopFileSystemService,
             IZinOSDesktopRepository zinOSDesktopRespository,
             IUnitOfWorkFactory unitOfWorkFactory)

@@ -12,7 +12,7 @@ using ZinOS.Common;
 
 namespace ZinOS.Services.Implementation
 {
-    public class ZinOSAppServiceImpl : ZinOSAppService
+    public class ZinOSAppServiceImpl : IZinOSAppService
     {
         //depends on these services:
         private readonly IFileSystemService _fileSystemService;
@@ -21,6 +21,7 @@ namespace ZinOS.Services.Implementation
         //depends on these repositories:
         private readonly IZinOSAppRepository _zinOSAppRepository;
         private readonly IUsersRepository _usersRepository;
+
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public ZinOSAppServiceImpl(IFileSystemService fileSystemService,
@@ -60,41 +61,30 @@ namespace ZinOS.Services.Implementation
 
         public void Update(int ownerUserId, int zinOsAppId, Stream zinOSAppZipFileStream)
         {
+            if (!Exists(zinOsAppId))
+                throw new ValidationException("zinOsAppId", "This ZinOS app id does not exist.");
 
+            // read zinOSAppZipFileStream
+            var zinOSAppZipFile = ReadZipFile(zinOSAppZipFileStream);
+
+            // read manifest file
+            var updatedApp = ReadZipFileManifest(zinOSAppZipFile);
+
+            //update app
+            updatedApp.Id = zinOsAppId;
+
+            updatedApp.CajoledModule = GetCajoledModule(zinOSAppZipFile, zinOsAppId);
+
+            _zinOSAppRepository.Update(updatedApp);
         }
 
         public void Submit(int ownerUserId, Stream zinOSAppZipFileStream)
         {
             // read zinOSAppZipFileStream
-            ZipFile zinOSAppZipFile;
-            try
-            {
-                zinOSAppZipFile = ZipFile.Read(zinOSAppZipFileStream);
-            }
-            catch (ZipException)
-            {
-                throw new ValidationException(new[]
-                                                  {
-                                                      new ValidationError("zipFile", "Can not read the uploaded zinOS app file.")
-                                                  });
-            }
-
-            //validate zip file content
-            ThrowValidationExceptionIfNotValid(zinOSAppZipFile);
-
-            //read 'ZinOS App' metadata
-            var metadataZipEntry = zinOSAppZipFile[MetadataFilename];
-
-            /*
-             * extract 'ZinOSApp' metadata 
-             * and create an 'ZinOSApp' using the provided metadata
-             */
-            Stream manifestFileStream = new MemoryStream();
-            metadataZipEntry.Extract(manifestFileStream);
-            manifestFileStream.Position = 0;
-            var app = CreateZinOSAppFromAppManifest(manifestFileStream);
-
-            ThrowValidationExceptionIfIconNotFound(zinOSAppZipFile, app.UserInterfaceConfiguration.Icon);
+            var zinOSAppZipFile = ReadZipFile(zinOSAppZipFileStream);
+            
+            //read manifest
+            var app = ReadZipFileManifest(zinOSAppZipFile);
 
             using (var uow = _unitOfWorkFactory.Create())
             {
@@ -151,6 +141,11 @@ namespace ZinOS.Services.Implementation
 
         #endregion 
 
+        private bool Exists(int appId)
+        {
+            return _zinOSAppRepository.Exists(appId);
+        }
+
         private static void ThrowValidationExceptionIfNotValid(ZipFile file)
         {
             var errors = new List<ValidationError>();
@@ -170,11 +165,45 @@ namespace ZinOS.Services.Implementation
 
         private static void ThrowValidationExceptionIfIconNotFound(ZipFile file, string iconPath)
         {
+            if (file == null)
+                return;
+
             if (iconPath == null)
                 return;
 
             if (file[iconPath] == null)
                 throw new ValidationException("manifest.xml", string.Format("{1} - The specified app icon ({0}) does not exist.", iconPath, MetadataFilename));
+        }
+
+        private static ZinOSApp ReadZipFileManifest(ZipFile zinOSZipFile)
+        {
+            //get manifest
+            var metadataZipEntry = zinOSZipFile[MetadataFilename];
+
+            //extract manifest file
+            var manifestFileStream = new MemoryStream();
+            metadataZipEntry.Extract(manifestFileStream);
+            manifestFileStream.Position = 0;
+
+            var app = CreateZinOSAppFromAppManifest(manifestFileStream);
+
+            ThrowValidationExceptionIfIconNotFound(zinOSZipFile, app.UserInterfaceConfiguration.Icon);
+
+            return app;
+        }
+
+        private static ZipFile ReadZipFile(Stream zipFileStream)
+        {
+            try
+            {
+                var zinOSAppZipFile = ZipFile.Read(zipFileStream);
+                ThrowValidationExceptionIfNotValid(zinOSAppZipFile);
+                return zinOSAppZipFile;
+            }
+            catch (ZipException)
+            {
+                throw new ValidationException("zipFile", "Can not read the uploaded zinOS app file.");
+            }
         }
 
         private static ZinOSApp CreateZinOSAppFromAppManifest(Stream xmlMetadataStream)

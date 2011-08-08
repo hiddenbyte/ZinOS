@@ -10,11 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZinOS.Services.Implementation", "ZinOS.Services.Implementation\ZinOS.Services.Implementation.csproj", "{B3F0E87F-DA2A-4174-A8D2-BCDE6A08A56A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2E77C4D-BD72-4AC3-BA99-63B2EC04742D}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-		ZinOS_Prototype.vsmdi = ZinOS_Prototype.vsmdi
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZinOS.Common", "ZinOS.Common\ZinOS.Common.csproj", "{B70456C7-3045-4BA9-A1FC-3195E172491F}"
 EndProject

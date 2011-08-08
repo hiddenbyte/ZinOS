@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ninject\ZinOSModule.cs" />
+    <Compile Include="Ninject\ZinOSServicesModule.cs" />
     <Compile Include="Ninject\ZinOSRepositoriesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

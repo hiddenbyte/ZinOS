@@ -10,6 +10,7 @@ namespace ZinOS.Repositories.Definitions
         void Add(TEntity entity);
         void Remove(TEntity entity);
         void Update(TEntity entity);
+        bool Exists(TKey key);
         TEntity GetByKey(TKey key);
         IEnumerable<TEntity> GetAll();
     }

@@ -114,7 +114,6 @@ namespace ZinOS.Services.Implementation
         }
     }
 
-
     internal static class DropboxUserInformationExtensions
     {
         public static bool IsEmpty(this DropboxUserInformation dropboxUserInformation) 

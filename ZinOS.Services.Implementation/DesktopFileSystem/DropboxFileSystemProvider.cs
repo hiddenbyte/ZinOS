@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ZinOS.Services.Definitions;
 using System.IO;
-using ZinOS.Configuration;
 using ZinOS.Services.Definitions.DesktopFileSystem;
 
 namespace ZinOS.Services.Implementation.DesktopFileSystem
@@ -13,11 +12,13 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
 
         private readonly FileSystemItem _rootFileSystemItem;
         private readonly IDropboxService _dropboxService;
+        private readonly IZinOSDesktopDropboxAccount _zinOSDesktopDropboxAccount;
 
-        public DropboxFileSystemProvider(IDropboxService dropbox) 
+        public DropboxFileSystemProvider(IDropboxService dropbox,IZinOSDesktopDropboxAccount zinOSDesktopDropboxAccount) 
         {
             _dropboxService = dropbox;
-            
+            _zinOSDesktopDropboxAccount = zinOSDesktopDropboxAccount;
+
             _rootFileSystemItem = new FileSystemItem { 
                 IsDirectory = true,
                 Path =  String.Format(@"\{0}", DropboxProviderName),
@@ -32,17 +33,13 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
 
         public FileSystemItem GetRoot(int desktopId)
         {
-            return _rootFileSystemItem;
+            return _zinOSDesktopDropboxAccount.HasAuthenticatedDropboxAccount(desktopId) ? _rootFileSystemItem : null;
         }
 
         public IEnumerable<FileSystemItem> GetChildrenItems(int desktopId, FileSystemItem parent)
         {
-            var typeLocator = TypeLocator.GetInstance();
-
-            string accessToken;
-            string tokenSecret;
-
-            typeLocator.GetType<IZinOSDesktopService>().GetDropboxToken(desktopId, out accessToken, out tokenSecret);
+            string accessToken, tokenSecret;
+            GetDesktopDropboxToken(desktopId, out accessToken, out tokenSecret);
 
             FormatToDropboxPath(parent);
 
@@ -59,10 +56,8 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
 
         public Stream GetFile(int desktopId, FileSystemItem fileSystemItem)
         {
-            var typeLocator = TypeLocator.GetInstance();
-            string accessToken;
-            string tokenSecret;
-            typeLocator.GetType<IZinOSDesktopService>().GetDropboxToken(desktopId, out accessToken, out tokenSecret);
+            string accessToken, tokenSecret;
+            GetDesktopDropboxToken(desktopId, out accessToken, out tokenSecret);
 
             FormatToDropboxPath(fileSystemItem);
 
@@ -147,11 +142,9 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
             return path;
         }
 
-        private static bool GetDesktopDropboxToken(int desktopId, out string accessToken, out string tokenSecret)
+        private bool GetDesktopDropboxToken(int desktopId, out string accessToken, out string tokenSecret)
         {
-            var typeLocator = TypeLocator.GetInstance();
-            return typeLocator.GetType<IZinOSDesktopService>().GetDropboxToken(desktopId, out accessToken,
-                                                                               out tokenSecret);
+            return _zinOSDesktopDropboxAccount.GetDropboxToken(desktopId, out accessToken, out tokenSecret);
         }
     }
 }
