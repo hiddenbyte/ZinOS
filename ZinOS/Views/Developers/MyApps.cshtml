@@ -1,0 +1,27 @@
+﻿@using ZinOS.ViewModels.Developers
+@model MyApps
+
+@{
+    ViewBag.Title = "ZinOS - Developers";
+    ViewBag.SubTitle = "My Apps";
+    Layout = "~/Views/Developers/_Layout.cshtml";
+}
+
+@section HeaderContent{
+    <link href="@Url.Content("~/Content/Developers/MyApps/css/developers.myapps.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="list-apps">
+        @{
+                foreach(var app in Model.UserApps)
+                {
+                    <div class="app">
+                    <img class="image" src="/ZinOSApp/Icon/@app.Id" alt="icon" />
+                    <div class="actions">
+                        <div>@app.Name (Ver. @app.Version)</div>
+                        @Html.ActionLink("update", "UpdateApp", "Developers", new { appId = app.Id }, null)
+                    </div>
+                    </div>
+                }
+        }
+</div>

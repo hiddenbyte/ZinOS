@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "ZinOS - Developers";
+    ViewBag.SubTitle = "Submit App";
+    Layout = "~/Views/Developers/_Layout.cshtml";
+}
+        
+@using (Html.BeginForm("SubmitApp", "Developers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{      
+    <div>
+        @Html.ValidationSummary()
+    </div>      
+    <div>
+        <label for="appFiles">ZinOS App package (*.zip)</label>
+        <input id="zinOSAppZipFile" type="file" name="zinOSAppZipFile" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+}

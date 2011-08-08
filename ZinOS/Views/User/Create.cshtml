@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Create ZinOS User Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderContent{
+    <link href="@Url.Content("~/Content/User/Create/css/user.create.css")" rel="StyleSheet" type="text/css" />
+}
+
+@using (Html.BeginForm("Create","User",FormMethod.Post))
+{
+    <div class="user-create-form">
+        <h2>Create ZinOS account</h2>
+        
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
+        <div class="field">
+            <div class="label">name</div>
+            @Html.TextBox("Name")
+        </div>
+        
+        <div class="field">
+            <div class="label">username</div>
+            @Html.TextBox("Username")
+        </div>
+
+        <div class="field">
+            <div class="label">password</div>
+              @Html.Password("Password")
+        </div>
+
+        <div class="field">
+            <div class="label">retype password</div>
+            @Html.Password("RetypePassword")
+        </div>
+
+        <div class="field">
+           <input type="submit" value="Create"/>
+        </div>
+    </div>
+}

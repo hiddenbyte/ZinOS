@@ -1,0 +1,14 @@
+﻿<div class="login-control" id="login-control">
+    @if (ViewBag.UserIsAuthenticated != null && ViewBag.UserIsAuthenticated)
+    {
+        <div class="button logout-button">logout</div>
+    }
+    else
+    {
+        <div class="label">username</div>
+        <input type="text" />
+        <div class="label">password</div>
+        <input type="password" />
+        <div class="button login-button">login</div>
+    }
+</div>

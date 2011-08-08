@@ -1,0 +1,61 @@
+﻿.upload-file 
+{
+    font-size: 12px;
+}
+
+
+.upload-file > input[type=file]
+{
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(165, 165, 165);
+}
+
+.upload-file > a
+{
+    display:block;
+    width: 100%;
+    margin-top: 5px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.upload-file > a:hover
+{
+    background-color: #EDEDED;
+}
+
+/*
+ * prompt window styling
+ */
+.prompt-window
+{
+    font-size: 12px;
+}
+
+.prompt-window > div
+{
+    width: 100%;
+}
+
+.prompt-window > input[type=text]
+{
+    width: 100%;
+}
+
+.prompt-window > span
+{
+    display: block;
+    width: 50px;
+    float:right;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.prompt-window > span:hover
+{
+    background-color: #EDEDED;
+    cursor: pointer;
+}

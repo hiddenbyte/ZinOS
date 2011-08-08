@@ -1,0 +1,33 @@
+﻿div#list-apps > div.app
+{
+    height:64px;
+    width:180px;
+    margin: 4px 4px 4px 4px;
+    display:inline-block;
+}
+
+div#list-apps > div.app > img.image
+{
+    display:block;
+    float:left;
+    height:64px;
+    width:64px;
+    margin-right:4px;
+}
+
+div#list-apps > div.app > div.actions
+{
+    width:112px;
+    height:64px;
+    float:left;
+}
+
+div#list-apps > div.app > div.actions a
+{
+    color:gray;
+}
+
+div#list-apps
+{
+    display:block;
+}

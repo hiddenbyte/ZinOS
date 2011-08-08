@@ -1,0 +1,29 @@
+﻿@model ZinOS.Data.Entities.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    var authenticated = Model.DropboxUserInformation.HasValue;
+}
+
+<div>
+    <h2>My ZinOS account</h2>
+
+    <div>
+        <span>Drobpox status: </span>
+        <span>
+            @if (authenticated)
+            {
+                @:authorized
+            }
+            else
+            {
+                @:not authorized
+            }
+        </span>
+    </div>
+    <div>
+        @Html.ActionLink("authorize", "AuthenticateDropbox", "User")
+    </div>
+</div>

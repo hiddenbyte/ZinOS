@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Shared/_Layout/default.css")" rel="stylesheet" type="text/css" />
+
+        <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.js")" type="text/javascript"></script>
+        
+        <link href="@Url.Content("~/Content/Shared/LoginControl/css/login-control.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Content/Shared/LoginControl/js/login-control.js")" type="text/javascript"></script>
+        @RenderSection("HeaderContent", required: false)         
+    </head>
+    <body>
+    
+        <div id="main">
+            <div id="header">    
+                <h1>ZinOS</h1>
+                @{
+                    Html.RenderPartial("LoginControl");
+                }
+            </div>
+            <div id="content">
+                @RenderBody()
+            </div>
+            <div id="footer">
+                <div class="menu">
+                    <div class="title">Developers</div>
+                    <div class="item">@Html.ActionLink("My Apps", "MyApps", "Developers")</div>
+                    <div class="item">@Html.ActionLink("Submit an App", "SubmitApp", "Developers")</div>
+                    <div class="item">@Html.ActionLink("Quick start", "QuickStart", "Developers")</div>
+                </div>
+                <div class="menu">
+                    <div class="title">ZinOS</div>
+                    <div class="item">@Html.ActionLink("Home", "Index", "Home")</div>
+                    <div class="item">@Html.ActionLink("About Us", "Index", "Home")</div>
+                </div>
+                <div class="menu">
+                    <div class="title">User</div>
+                    <div class="item">@Html.ActionLink("My Account", "Edit", "User")</div>
+                    <div class="item">@Html.ActionLink("Create Account", "Create", "User")</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ZinOS - Developers";
+}
+
+@section HeaderContent
+{ 
+    <link href="@Url.Content("~/Content/Developers/_Layout/css/developers._layout.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("HeaderContent", false)
+}
+
+<div id="index">
+    <div id="left-side">
+            <a class="menu-option" href="/Developers/MyApps">
+                My Apps
+            </a>
+            <a class="menu-option" href="/Developers/SubmitApp">
+                Submit App
+            </a>
+            <a class="menu-option" href="/Developers/QuickStart">
+                Quick Start
+            </a>
+    </div>
+    <div id="center-side">
+        <div class="title">@ViewBag.SubTitle</div>
+        <div class="content">@RenderBody()</div>
+    </div>
+</div>
+

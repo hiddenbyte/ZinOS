@@ -1,0 +1,15 @@
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.pdb
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data.Entities\obj\Debug\ResolveAssemblyReference.cache
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.pdb
+C:\my-files\development\ZinOS\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.dll
+C:\my-files\development\ZinOS\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.pdb
+C:\my-files\development\ZinOS\ZinOS.Data.Entities\obj\Debug\ResolveAssemblyReference.cache
+C:\my-files\development\ZinOS\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.dll
+C:\my-files\development\ZinOS\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.pdb
+D:\development\ZinOS\ZinOS\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.dll
+D:\development\ZinOS\ZinOS\ZinOS.Data.Entities\bin\Debug\ZinOS.Data.Entities.pdb
+D:\development\ZinOS\ZinOS\ZinOS.Data.Entities\obj\Debug\ResolveAssemblyReference.cache
+D:\development\ZinOS\ZinOS\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.dll
+D:\development\ZinOS\ZinOS\ZinOS.Data.Entities\obj\Debug\ZinOS.Data.Entities.pdb

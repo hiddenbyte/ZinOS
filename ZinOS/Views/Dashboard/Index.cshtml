@@ -1,0 +1,21 @@
+﻿@using ZinOS.Utils;
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderContent{
+    <link href="@Url.Content("~/Content/Dashboard/Index/css/default.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Content/Dashboard/Index/js/home.dashboard.js")" type="text/javascript"></script>
+    
+    @ScriptHelper.BeginClientBag()
+    @ScriptHelper.AddToClientBag("DesktopId", ViewBag.DesktopId)
+    @ScriptHelper.EndClientBag()
+}
+
+<div class="dashboard-button-container">
+    <div class="dashboard-button" id="my-zinos-desktop">My ZinOS Desktop</div>
+    <div class="dashboard-button" id="my-zinos-account">My ZinOS Account</div>
+    <div class="dashboard-button" id="my-zinos-developer"">Developer</div>
+</div>
+

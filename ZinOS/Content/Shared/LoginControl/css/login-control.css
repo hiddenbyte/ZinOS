@@ -1,0 +1,44 @@
+﻿div.login-control 
+{
+    position:absolute;
+    top:0px;
+    right:150px;
+    background-color:White;
+    width:175px;
+    height:auto;
+    padding-bottom:5px;
+    padding-left:5px;
+    
+    /*css3*/
+    box-shadow: 0px 2px 5px black;
+}
+
+
+div.login-control > input
+{
+    font-size:12px;
+    width: 90%;
+}
+
+div.login-control > div.label
+{
+    font-size:12px;
+    font-weight:bold;
+    width: 80%;
+}
+
+div.login-control > div.button
+{
+    font-size:12px;
+    font-weight:bold;
+    text-align:right;
+    width: 90%;
+    padding-top:4px;
+    height:16px;
+}
+
+div.login-control > div.button:hover
+{
+    text-decoration: underline;
+    cursor:pointer;
+}

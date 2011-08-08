@@ -1,0 +1,71 @@
+﻿@using  ZinOS.Utils;
+
+@model ZinOS.Desktop.ViewModels.Main.Index
+           
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ZinOS desktop</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+        <link href="@Url.Content("~/Content/Shared/jQueryUI/flick/jquery-ui-1.8.14.custom.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Desktop/Main/Layout/basic.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Desktop/Main/css/save-file.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Desktop/Main/css/upload-file.css")" rel="stylesheet" type="text/css" />
+
+        <script src="@Url.Content("~/Scripts/jquery-1.6.2.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.core.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.widget.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.mouse.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.position.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.resizable.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.draggable.innocent.js")" type="text/ecmascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.ui-1.8.24-innocent/jquery.ui.dialog.innocent.js")" type="text/ecmascript"></script>
+
+        <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.js")" type="text/javascript"></script> 
+        <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.ui.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.dom.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.http.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.file-system/desktop.file-system.model.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.save-file/desktop.save-file.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.save-file/desktop.save-file.control.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.zinos-app-installation.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.zinos-app-installation.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.zinos-desktop.model.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.zinos-desktop.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.zinos-app.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.my-apps.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.my-apps.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.taskbar.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.taskbar.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.upload-file/desktop.upload-file.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.upload-file/desktop.upload-file.view.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Shared/js/google-caja/caja.js")" type="text/javascript"></script>
+        
+        <script src="@Url.Content("~/Content/Desktop/Main/js/zinos.client.init.js")" type="text/ecmascript"></script>
+
+        @ScriptHelper.BeginClientBag()
+        @ScriptHelper.AddToClientBag("DesktopId", Model.DesktopId)
+        @ScriptHelper.EndClientBag()
+    </head>
+    <body>
+        <div id="task-bar">
+            <div class="option" id="my-apps-option">my apps</div>
+            <div class="option" id="available-apps-option">available apps</div>
+            <div class="option-right" id="exit-option">exit</div>
+        </div>
+
+        <div id="installed-apps" class="task-bar-container">
+        </div>
+        
+        <div id="list-apps" class="task-bar-container">
+        </div>
+    </body>
+</html>
+

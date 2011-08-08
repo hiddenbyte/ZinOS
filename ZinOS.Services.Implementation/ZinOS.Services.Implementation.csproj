@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3F0E87F-DA2A-4174-A8D2-BCDE6A08A56A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZinOS.Services.Implementation</RootNamespace>
+    <AssemblyName>ZinOS.Services.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppLimit.CloudComputing.oAuth.Net40">
+      <HintPath>SharpBox-1.0.3-261\AppLimit.CloudComputing.oAuth.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.CloudComputing.SharpBox.Net40">
+      <HintPath>SharpBox-1.0.3-261\AppLimit.CloudComputing.SharpBox.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.Common.Objects">
+      <HintPath>SharpBox-1.0.3-261\AppLimit.Common.Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.Common.Toolkit">
+      <HintPath>SharpBox-1.0.3-261\AppLimit.Common.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth, Version=3.4.6.10357, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\DotNetZip-v1.9\Release\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net40">
+      <HintPath>SharpBox-1.0.3-261\Newtonsoft.Json.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthenticationServiceImpl.cs" />
+    <Compile Include="DesktopFileSystem\DesktopFileSystemImpl.cs" />
+    <Compile Include="DesktopFileSystem\DropboxFileSystemProvider.cs" />
+    <Compile Include="DesktopFileSystem\LocalFileSystemProvider.cs" />
+    <Compile Include="Dropbox\DropboxImpl.cs" />
+    <Compile Include="FileSystemServiceImpl.cs" />
+    <Compile Include="GoogleCajaServiceImpl.cs" />
+    <Compile Include="UserDropboxAccountServiceImpl.cs" />
+    <Compile Include="UserImpl.cs" />
+    <Compile Include="ZinOSAppServiceImpl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZinOSDesktopServiceImpl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZinOS.Common\ZinOS.Common.csproj">
+      <Project>{B70456C7-3045-4BA9-A1FC-3195E172491F}</Project>
+      <Name>ZinOS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZinOS.Data.Entities\ZinOS.Data.Entities.csproj">
+      <Project>{FE49D740-BF64-49F7-87F3-A65B65CBA74E}</Project>
+      <Name>ZinOS.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZinOS.Repositories.Definitions\ZinOS.Repositories.Definitions.csproj">
+      <Project>{75E4AEE2-4E27-4C42-A91F-893B5CA9B5EF}</Project>
+      <Name>ZinOS.Repositories.Definitions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZinOS.Services\ZinOS.Services.Definitions.csproj">
+      <Project>{D3056406-4662-4023-82BC-39FF907E310D}</Project>
+      <Name>ZinOS.Services.Definitions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="ManifestSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,86 @@
+﻿div.folders
+{
+    margin-top:5px;
+    margin-bottom:5px;
+    width:100%;
+    height:200px;
+    min-height:200px;
+    max-height:200px;
+    overflow-y: scroll;
+}
+
+div.folder:hover, div.back:hover
+{
+    cursor:pointer;
+}
+
+div.folder, div.back
+{
+    font-size:12px;
+    font-family:Verdana, Arial;
+    background-color: #ededed;
+    width:100%;
+    height:16px;
+    margin-top:1px;
+    margin-bottom:1px;
+}
+
+div.folder > div.icon, div.back > div.icon, div.save-btn > div.icon
+{
+    float:left;
+    height:16px;
+    width:16px;
+}
+
+div.save-btn > div.icon
+{
+    background-image: url(../image/disk.png);
+}
+
+div.folder > div.icon
+{
+    background-image: url(../image/dir.png);
+}
+
+div.back > div.icon
+{
+    background-image: url(../image/back.png);
+}
+
+div.folder > div.name, div.back > div.name
+{
+    padding-left:2px;
+    float:left;
+    height:16px;
+}
+
+div.file-info
+{
+    font-size:12px;
+    width:100%;
+    height:auto;
+}
+
+div.file-info > input[type=text].filename
+{
+    float:left;
+    width:100%;
+    max-height:16px;
+}
+
+div.file-info > div.save-btn:hover
+{
+    cursor:pointer;
+}
+
+div.file-info > div.save-btn
+{
+    float:right;
+    width:15%;
+    height:16px;
+    margin-left:2px;
+    text-align:center;
+    background-color:#ededed;
+    color:#444;
+}
+

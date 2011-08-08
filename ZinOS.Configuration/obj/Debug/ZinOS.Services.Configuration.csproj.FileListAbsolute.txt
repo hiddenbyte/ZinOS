@@ -1,0 +1,12 @@
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Configuration.pdb
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\Ninject.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Services.Definitions.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Services.Implementation.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Services.Implementation.pdb
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\ZinOS.Services.Definitions.pdb
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\Ninject.pdb
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\bin\Debug\Ninject.xml
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\obj\Debug\ResolveAssemblyReference.cache
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\obj\Debug\ZinOS.Configuration.dll
+D:\development\ZinOS\ZinOS_Prototype\ZinOS.Configuration\obj\Debug\ZinOS.Configuration.pdb

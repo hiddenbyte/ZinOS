@@ -1,0 +1,129 @@
+﻿body
+{
+     margin-top:0px;     
+     color: Gray;
+     font-family: Arial, Verdana;
+}
+
+div#main
+{
+    width:100%;
+}
+
+div#main > div#footer
+{
+    width:100%;
+    padding-top:5px;
+    min-height:50px;
+    height:auto;
+    border-top: 1px solid gray;
+}
+
+div#main > div#header
+{
+    width:100%;
+    height: 80px;
+    background-color:gray;
+    box-shadow: 0px 4px 5px gray;
+}
+
+div#header > h1
+{
+    font-size:56px;
+    text-align:center;
+    margin-left:10px;
+    margin-bottom:0px;
+    margin-top:0px;
+    width:225px;
+    color:white;
+    text-shadow: 5px 5px 25px black;
+    display:block;
+}
+
+div#main > div#content
+{
+    height: auto;
+    padding-bottom:50px;
+    padding-top:50px;
+    width: 100%;
+}
+
+div#footer > div.menu
+{
+    width: 150px;
+    float:left;
+    padding-left: 5px;
+}
+
+div#footer > div.menu > div.item:hover
+{
+    text-decoration:underline;
+}
+
+div#footer > div.menu > div.item > a
+{
+    color:gray;
+    font-size:12px;
+    text-transform:lowercase;
+    text-decoration:none;
+}
+
+div#footer > div.menu > div.title
+{
+    font-weight: bold;
+    font-size:12px;
+}
+
+
+/*div.index
+{
+   margin-right:auto;
+   margin-left:auto;
+   width:700px;
+   padding: 5px 2px 5px 2px;
+}*/
+
+/*div.field
+{
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left:4px;
+    margin-right:4px;
+    float:left;
+    width:300px;
+}*/
+
+/*div.field > div.input
+{
+    width:100%;
+}
+
+div.field > div.input > input[type=text], div.field > div.input > input[type=password]
+{
+    font-size:24px;
+    width: 100%;
+    height:30px;
+    border: 0px solid white;
+    box-shadow: 5px 5px 25px #CCCCCC;
+}
+
+div.index > div.button:hover
+{
+    cursor:pointer;
+}
+
+div.index > div.button
+{
+    float:left;
+    width:75px;
+    height:25px;
+    padding-top:5px;
+    margin-bottom:2px;
+    margin-top:2px;
+    border:1px solid white;
+    background-color:green;
+    color:white;
+    text-align:center;
+    margin-left: 4px;
+    box-shadow: 5px 5px 25px #CCCCCC;
+}*/

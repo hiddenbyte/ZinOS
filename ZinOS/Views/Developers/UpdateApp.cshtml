@@ -1,0 +1,19 @@
+﻿@model ZinOS.Data.Entities.ZinOSApp
+           
+@{
+    ViewBag.SubTitle = "Update App";
+    Layout = "~/Views/Developers/_Layout.cshtml";
+}
+
+<h2>@Model.Name - @Model.Description</h2>
+@using (Html.BeginForm("UpdateApp", "Developers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{            
+    <div>
+        <label for="appFiles">ZinOS App package (*.zip)</label>
+        <input id="zinOSAppZipFile" type="file" name="zinOSAppZipFile" />
+        <input id="zinOSAppId" type="hidden" name="zinOSAppId" value="@Model.Id" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+}
