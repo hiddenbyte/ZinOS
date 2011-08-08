@@ -1,6 +1,0 @@
-D:\development\ZinOS\ZinOS\NamedPipeTest\bin\Debug\NamedPipeTest.exe
-D:\development\ZinOS\ZinOS\NamedPipeTest\bin\Debug\NamedPipeTest.pdb
-D:\development\ZinOS\ZinOS\NamedPipeTest\bin\Debug\protobuf-net.dll
-D:\development\ZinOS\ZinOS\NamedPipeTest\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\development\ZinOS\ZinOS\NamedPipeTest\obj\x86\Debug\NamedPipeTest.exe
-D:\development\ZinOS\ZinOS\NamedPipeTest\obj\x86\Debug\NamedPipeTest.pdb
