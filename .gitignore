@@ -2,3 +2,17 @@
 /_ReSharper.ZinOS_Prototype
 /_ReSharper.ZinOS
 /ZinOS.6.0.ReSharper.user
+/ZinOS/bin
+/ZinOS/obj
+/ZinOS.Common/bin
+/ZinOS.Common/obj
+/ZinOS.Data.Entities/bin
+/ZinOS.Data.Entities/obj
+/ZinOS.Repositories.Definitions/bin
+/ZinOS.Repositories.Definitions/obj
+/ZinOS.Repositories.Implementation/bin
+/ZinOS.Repositories.Implementation/obj
+/ZinOS.Services/bin
+/ZinOS.Services/obj
+/ZinOS.Services.Implementation/bin
+/ZinOS.Services.Implementation/obj
