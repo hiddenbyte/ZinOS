@@ -6,6 +6,8 @@
 /ZinOS/obj
 /ZinOS.Common/bin
 /ZinOS.Common/obj
+/ZinOS.Configuration/bin
+/ZinOS.Configuration/obj
 /ZinOS.Data.Entities/bin
 /ZinOS.Data.Entities/obj
 /ZinOS.Repositories.Definitions/bin
