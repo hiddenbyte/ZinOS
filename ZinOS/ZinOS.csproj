@@ -124,13 +124,8 @@
     <Content Include="Content\Desktop\Main\Layout\teste-wallpaper.jpg" />
     <Content Include="Content\Desktop\Main\css\save-file.css" />
     <Content Include="Content\Shared\js\google-caja\caja.js" />
-    <Content Include="Content\Shared\js\google-caja\domita-minified.js" />
     <Content Include="Content\Shared\js\google-caja\es53-guest-frame.opt.js" />
     <Content Include="Content\Shared\js\google-caja\es53-taming-frame.opt.js" />
-    <Content Include="Content\Shared\js\google-caja\host-tools.js" />
-    <Content Include="Content\Shared\js\google-caja\module-promise-minified.js" />
-    <Content Include="Content\Shared\js\google-caja\setup-valija.js" />
-    <Content Include="Content\Shared\js\google-caja\valija.out.js" />
     <Content Include="Content\Desktop\Main\js\zinos.client.init.js" />
     <Content Include="Content\Desktop\ZinOSApp\js\zinos-app.api.js" />
     <Content Include="Content\Developers\MyApps\css\developers.myapps.css" />

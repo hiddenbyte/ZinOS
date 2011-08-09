@@ -101,8 +101,9 @@ namespace ZinOS.Services.Implementation
             catch (Exception)
             {
                 _zinOSAppRepository.Remove(app);
+                throw;
             }
-
+            
             zinOSAppZipFile.Dispose();
         }
 
