@@ -18,7 +18,7 @@
         var _window;
 
         this.Close = function () {
-            _window.dialog('close');
+            _window.dialog('close').dialog('destroy').remove();
         };
 
         this.SaveFile = function (filename, onsave, roots) {

@@ -4,11 +4,11 @@
     if (!window.ZinOS.Desktop)
         window.ZinOS.Desktop = {};
 
-    var MyAppsController = function (myAppsView, zinOSAppsController) {
+    var myAppsController = function (myAppsView, zinOSAppsController) {
         myAppsView.SetAppIconOnClickHandler(function (zinOSAppId) {
             zinOSAppsController.RunZinOSApp(zinOSAppId);
         });
     };
 
-    window.ZinOS.Desktop.MyAppsController = MyAppsController;
+    window.ZinOS.Desktop.MyAppsController = myAppsController;
 })();

@@ -37,6 +37,12 @@
             });
         };
 
+        this.SetRemoveAppsClickHandler = function (handler) {
+            $("#remove-apps-option").click(function () {
+                handler();
+            });
+        };
+
         var ShowMenu = this.ShowMenu = function (menuId) {
             if (selectedMenu == menuId)
                 return false;

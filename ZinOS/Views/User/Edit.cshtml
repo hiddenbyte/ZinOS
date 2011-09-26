@@ -5,14 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     
     var authenticated = Model.DropboxUserInformation.HasValue;
+    var statusClass = authenticated ? "dropbox-authorized" : "dropbox-not-authorized";
+}
+
+@section HeaderContent{
+    <link href="@Url.Content("~/Content/User/Edit/css/user.edit.css")" rel="StyleSheet" type="text/css" />
 }
 
 <div>
     <h2>My ZinOS account</h2>
-
     <div>
-        <span>Drobpox status: </span>
-        <span>
+        @Html.ValidationSummary()
+    </div>
+    <div class="dropbox">
+        <span>Drobpox authorization: </span>
+        <span class="@statusClass">
             @if (authenticated)
             {
                 @:authorized
@@ -22,8 +29,24 @@
                 @:not authorized
             }
         </span>
+        <span>@Html.ActionLink("authorize", "AuthenticateDropbox", "User")</span>
     </div>
+    
     <div>
-        @Html.ActionLink("authorize", "AuthenticateDropbox", "User")
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+        {
+            <div class="field">
+                <div class="label">password</div>
+                @Html.Password("Password")
+            </div>
+
+            <div class="field">
+                <div class="label">retype password</div>
+                @Html.Password("RetypePassword")
+            </div>
+            <div class="field">
+                <input type="submit" value="Change"/>
+            </div>
+        }
     </div>
 </div>

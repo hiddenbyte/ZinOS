@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ZinOS.Data.Entities;
-using ZinOS.Repositories.Definitions;
-using ZinOS.Services.Definitions;
+﻿using ZinOS.Repositories.Definitions;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.Services.Implementation
 {
@@ -35,17 +30,6 @@ namespace ZinOS.Services.Implementation
             user.DropboxUserInformation.TokenSecret = tokenSecret;
 
             _userRepository.Update(user);
-        }
-
-        public string GetTokenSecret(string token)
-        {
-            return _userRepository.GetDropboxTokenSecret(token);
-        }
-
-        public string GetDropboxAccessToken(int userId)
-        {
-            var user = _userRepository.GetByKey(userId);
-            return user.DropboxUserInformation.Token;
         }
     }
 }

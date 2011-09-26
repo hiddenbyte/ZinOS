@@ -8,6 +8,11 @@
         //Install ZsinOS App
         zinOsAppInstallationAppView.SetAppInstallHandler(function (zinOSAppId) {
             zinOsDesktopModel.InstallZinOSApp(zinOSAppId, function (result) {
+                if (result) {
+                    zinOsAppInstallationAppView.InstalledSuccesFully(zinOSAppId);
+                } else {
+                    zinOsAppInstallationAppView.CantInstall(zinOSAppId);
+                }
             });
         });
     };

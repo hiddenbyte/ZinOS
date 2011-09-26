@@ -5,6 +5,7 @@ using ZinOS.Common;
 using ZinOS.Data.Entities;
 using ZinOS.Repositories.Definitions;
 using ZinOS.Services.Definitions;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.Services.Implementation
 {
@@ -72,6 +73,8 @@ namespace ZinOS.Services.Implementation
             if (errors.Count() > 0)
                 throw new ValidationException(errors);
 
+
+            ZinOSDesktop newDesktop = null;
             using (var uow = _unitOfWorkFactory.Create())
             {
                 try
@@ -80,7 +83,7 @@ namespace ZinOS.Services.Implementation
 
                     _userRepository.Add(newUser);
 
-                    var newDesktop = new ZinOSDesktop
+                    newDesktop = new ZinOSDesktop
                                          {
                                              DesktopUser = newUser
                                          };
@@ -89,16 +92,46 @@ namespace ZinOS.Services.Implementation
 
                     uow.Commit();
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     uow.Rollback();
+                    HandleRepositoryException(e);
                     throw;
                 }
             }
+            _zinOSDesktopService.PrepareFileSystem(newDesktop);
+        }
+
+        public void ChangeUserPassword(int userId,string newPassword)
+        {
+            var user = _userRepository.GetByKey(userId);
+            if(user == null)
+                throw new ValidationException("userId", "User not found");
+            
+            user.Password = newPassword;
+
+            _userRepository.Update(user);
+        }
+
+        private static void HandleRepositoryException(Exception e)
+        {
+            var repositoryException = e as RepositoryException;
+
+            if (repositoryException == null)
+                return;
+
+            var validationErrors = new List<ValidationError>();
+            foreach (var error in repositoryException.Errors)
+                validationErrors.Add(new ValidationError(error.EntityAttributeName, error.Message));
+
+            if (validationErrors.Count > 0)
+                throw new ValidationException(validationErrors);
         }
 
         private static IEnumerable<ValidationError> GetErrors(User user)
         {
+            const int usernameMaxLength = 15;
+
             var errors = new List<ValidationError>();
 
             if (String.IsNullOrEmpty(user.Name) || String.IsNullOrWhiteSpace(user.Name))
@@ -106,6 +139,10 @@ namespace ZinOS.Services.Implementation
 
             if (String.IsNullOrEmpty(user.Username) || String.IsNullOrWhiteSpace(user.Username))
                 errors.Add(new ValidationError("Username", "Username can not be blank"));
+
+            if (!String.IsNullOrEmpty(user.Username) && user.Username.Length > usernameMaxLength)
+                errors.Add(new ValidationError("Username", 
+                    String.Format("Username must not exceed {0} characters",usernameMaxLength)));
 
             if (String.IsNullOrEmpty(user.Password) || String.IsNullOrWhiteSpace(user.Password))
                 errors.Add(new ValidationError("Password", "Password can not be blank"));

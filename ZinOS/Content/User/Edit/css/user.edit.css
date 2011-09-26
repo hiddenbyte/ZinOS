@@ -1,0 +1,13 @@
+﻿div.dropbox {
+    margin-bottom: 10px;
+}
+
+div.dropbox > span.dropbox-authorized
+{
+    color: green;
+}
+
+div.dropbox > span.dropbox-not-authorized
+{
+    color: red;
+}

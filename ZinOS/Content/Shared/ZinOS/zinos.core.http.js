@@ -13,6 +13,8 @@
         window.ZinOS.Core.HTTP = {};
 
     var http = function () {
+        var self = this;
+
         /*
         * @method AsyncHTTPRequest
         * @args { 
@@ -35,6 +37,13 @@
                 type: httpRequestArgs.type,
                 dataType: httpRequestArgs.dataType,
                 data: httpRequestArgs.data,
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (self.ServerErrorHandler != undefined && self.ServerErrorHandler.constructor ==  Function) {
+                        self.ServerErrorHandler(textStatus, errorThrown);
+                    } else {
+                        alert(errorThrown);
+                    }
+                },
                 success: function (data) {
                     httpRequestArgs.callback(data);
                 }
@@ -60,10 +69,12 @@
                     httpRequestArgs.callback(resp);
                 }
             }, false);
-            
+
             xhr.open(httpRequestArgs.type, httpRequestArgs.url);
             xhr.send(formData);
         };
+
+        this.ServerErrorHandler = undefined;
     };
 
     //static class DOM

@@ -21,6 +21,8 @@ namespace ZinOS.Repositories.Implementation.Configuration
                 .HasMany(u => u.OwnedZinOSApps)
                 .WithRequired(app => app.Owner);
 
+            modelBuilder.Entity<User>().Property(user => user.Username).HasMaxLength(15);
+
             modelBuilder.ComplexType<DropboxUserInformation>();
         }
     }

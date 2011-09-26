@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZinOS.Services.Implementation.AuthenticationServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>AuthenticationServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.DropboxImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAACAACAAAAACQEQAAQAABBAAAAACAAEAAAgAAQQ=</HashCode>
+      <FileName>Dropbox\DropboxImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.FileSystemServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABABAAAAAAEBAAAAIQAAAAAAAAgEAACAAEEAAgAAQQ=</HashCode>
+      <FileName>FileSystemServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.UserDropboxAccountServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAABAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserDropboxAccountServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.UserServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAoAYAABAABAAAAgAACAAIAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>UserImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.DropboxUserInformationExtensions" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserImpl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.ZinOSAppServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAICICAAAAAAAgAAAIEEgAAAAhAAIBIMQkAQIA=</HashCode>
+      <FileName>ZinOSAppServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.ZinOSDesktopDropboxAccountImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ZinOSDesktopDropboxAccountImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.ZinOSDesktopServiceImpl" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAQBBAAAAAAABAYAoAQAAAiBAAIAAEAAAEEEICAAgRA=</HashCode>
+      <FileName>ZinOSDesktopServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_desktopDropboxAccountService" />
+      <Field Name="_desktopFileSystem" />
+      <Field Name="_zinOSAppService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.DesktopFileSystem.DesktopFileSystemImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABABAAAAAAAAACBQAAACAAAAAAAAAAEEEAAAAARA=</HashCode>
+      <FileName>DesktopFileSystem\DesktopFileSystemImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.DesktopFileSystem.DropboxFileSystemProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABAAAQAAAAAAAAAwAIBAAAAAAAABAAEEEAABQAQA=</HashCode>
+      <FileName>DesktopFileSystem\DropboxFileSystemProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.DesktopFileSystem.LocalFileSystemProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABAAAAAAAAAgAAAQAAAAAAABQAAAAAEEEAAAQAQA=</HashCode>
+      <FileName>DesktopFileSystem\LocalFileSystemProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.GoogleCajaService.CajoleResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAgAAAAAAAAAAAAAAAAABCAAAAAAAAAA=</HashCode>
+      <FileName>GoogleCajaService\CajoleResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.GoogleCajaService.GoogleCajaServiceImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAIAAQAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoogleCajaService\GoogleCajaServiceImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZinOS.Services.Implementation.GoogleCajaService.Message" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAAAAABAQAAAAAAACA=</HashCode>
+      <FileName>GoogleCajaService\Message.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ZinOS.Services.Definitions.IZinOSDesktopDropboxAccount">
+    <Position X="9" Y="0.5" Width="2.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ZinOS.Services.Definitions.IZinOSAppService">
+    <Position X="9" Y="4" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ZinOS.Services.Definitions.DesktopFileSystem.IDesktopFileSystem">
+    <Position X="9" Y="1.75" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

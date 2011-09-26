@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
         <link href="@Url.Content("~/Content/Shared/jQueryUI/flick/jquery-ui-1.8.14.custom.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/Desktop/Main/Layout/basic.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Desktop/Main/css/basic.css")" rel="stylesheet" type="text/css" />
         <link href="@Url.Content("~/Content/Desktop/Main/css/save-file.css")" rel="stylesheet" type="text/css" />
         <link href="@Url.Content("~/Content/Desktop/Main/css/upload-file.css")" rel="stylesheet" type="text/css" />
 
@@ -31,6 +31,8 @@
         <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.dom.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Shared/ZinOS/zinos.core.http.js")" type="text/javascript"></script>
 
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.remove-apps.controller.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.remove-apps.view.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.file-system/desktop.file-system.model.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.save-file/desktop.save-file.view.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.save-file/desktop.save-file.control.js")" type="text/javascript"></script>
@@ -46,6 +48,10 @@
         <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.upload-file/desktop.upload-file.controller.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Desktop/Main/js/desktop.upload-file/desktop.upload-file.view.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.storage.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.storage.stream.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.storage.streamwriter.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/Desktop/ZinOSApp/js/zinos-app.api.ui.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Content/Shared/js/google-caja/caja.js")" type="text/javascript"></script>
         
         <script src="@Url.Content("~/Content/Desktop/Main/js/zinos.client.init.js")" type="text/ecmascript"></script>
@@ -59,6 +65,7 @@
             <div class="option" id="my-apps-option">my apps</div>
             <div class="option" id="available-apps-option">available apps</div>
             <div class="option-right" id="exit-option">exit</div>
+            <div class="option-right" id="remove-apps-option">remove apps</div>
         </div>
 
         <div id="installed-apps" class="task-bar-container">

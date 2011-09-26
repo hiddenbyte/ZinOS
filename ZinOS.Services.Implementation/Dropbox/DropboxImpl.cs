@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using ZinOS.Common;
 using ZinOS.Services.Definitions;
+using ZinOS.Services.Definitions.DesktopFileSystem;
 using ZinOS.Services.Definitions.Types;
 using AppLimit.CloudComputing.SharpBox.DropBox;
 using AppLimit.CloudComputing.SharpBox;
@@ -46,29 +48,31 @@ namespace ZinOS.Services.Implementation
 
         public string GetConsumerKey()
         {
-            return "6s2j9043ko7rlio";
+            return ApplicationSettings.Setting.DropboxAPIConsumerKey;
         }
 
         public string GetConsumerSecret()
         {
-            return "cz16ua14p3yzcts";
+            return ApplicationSettings.Setting.DropobxConsumerSecret;
         }
 
-        public bool CreateFile(string accessToken, string accessTokenSecret, string filePath, Stream fileStream)
+        public string CreateFile(string accessToken, string accessTokenSecret, string filePath, Stream fileStream)
         {
             var cloudStorage = openCloudStorage(accessToken, accessTokenSecret);
 
             if (cloudStorage == null)
-                return false;
-
+                return null;
+            
             var fileSystemEntry = cloudStorage.CreateFile(filePath);
-
+            
             var destFileStream = fileSystemEntry.GetContentStream(FileAccess.Write);
+
             fileStream.CopyTo(destFileStream);
+            
             destFileStream.Flush();
             destFileStream.Close();
 
-            return true;
+            return fileSystemEntry.Name;
         }
 
         public bool CreateDirectory(string accessToken, string accessTokenSecret, string dirPath)

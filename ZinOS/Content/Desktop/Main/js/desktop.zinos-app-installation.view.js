@@ -1,4 +1,5 @@
 ﻿(function () {
+
     if (!window.ZinOS)
         window.ZinOS = {};
     if (!window.ZinOS.Desktop)
@@ -23,6 +24,20 @@
             }
 
             $("div#list-apps > div.app > div.actions > a.app-install").click(onAppInstallHandler);
+        };
+
+        this.InstalledSuccesFully = function (appId) {
+            $('#list-apps').find('#app-install_' + appId).
+                text('installed')
+                .unbind('click', onAppInstallHandler)
+                .addClass('app-installed');
+        };
+
+        this.CantInstall = function (appId) {
+            $('#list-apps').find('#app-install_' + appId).
+                text('error ocurred')
+                .unbind('click', onAppInstallHandler)
+                .addClass('app-error-installing');
         };
 
         /*

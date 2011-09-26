@@ -7,7 +7,7 @@ using ZinOS.Mvc;
 
 namespace ZinOS.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ZinOSController
     {
         private readonly IAuthenticationService _authenticationService;
 
@@ -17,6 +17,7 @@ namespace ZinOS.Controllers
         }
 
         [HttpGet]
+        [IgnoreAuthorization]
         public ActionResult Index()
         {
             if (AuthenticationHelper.Authenticated())
@@ -25,6 +26,7 @@ namespace ZinOS.Controllers
         }
 
         [HttpPost]
+        [IgnoreAuthorization]
         public JsonResult Login(string username, string password)
         {
             bool success;
@@ -44,26 +46,26 @@ namespace ZinOS.Controllers
                 }
             }
             catch (Exception)
-            {
-               //TODO: log this exception
-               return new ZinOSAjaxMessageResult<bool>(false, MessageType.Error);
+            {               
+                return ZinOSAjaxErrorMessage();
             }
 
-            return new ZinOSAjaxMessageResult<bool>(success, MessageType.Success);
+            return ZinOSAjaxMessage(success);
         }
 
         [HttpPost]
+        [IgnoreAuthorization]
         public JsonResult Logout()
         {
             try
             {
                 AuthenticationHelper.DeleteCurrentAuthenticationTicket();
-                return new ZinOSAjaxMessageResult<bool>(true, MessageType.Success);
+                return ZinOSAjaxMessage(true);
             }
             catch(Exception)
             {
                 //TODO: Log this Exception
-                return new ZinOSAjaxMessageResult<object>(null, MessageType.Error);
+                return ZinOSAjaxErrorMessage();
             }
         }
     }

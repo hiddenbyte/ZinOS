@@ -11,14 +11,16 @@ namespace ZinOS.Services.Definitions.DesktopFileSystem
 
         Stream GetFile(int desktopId, FileSystemItem fileSystemItem);
 
-        bool UpdateFile(int desktopId, string filePath, string fileContent);
-
         bool UpdateFile(int desktopId, string filePath, byte[] fileContent);
 
-        bool CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream);
+        string CreateFile(int destkopId, string targetFileNamePath, byte[] fileData);
+
+        string CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream);
 
         bool CreateDirectory(int desktopId, string dirPath);
 
         bool DeleteFile(int desktopId, string filePath);
+
+        bool PrepareFileSystem(int desktopId);
     }
 }

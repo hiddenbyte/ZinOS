@@ -1,4 +1,4 @@
-﻿(function (){
+﻿(function () {
     if (!window.ZinOS)
         window.ZinOS = {};
     if (!window.ZinOS.Desktop)
@@ -12,10 +12,10 @@
         var zinOSAppAPI = undefined;
 
         var init = function () {
-            caja.initialize({ cajaServer: 'http://localhost:49545/Content/Shared/js/google-caja/' });
+            caja.initialize({ cajaServer: '/Content/Shared/js/google-caja/' });
 
             //create 
-            var zinOS = new ZinOSApp(window, thisController);
+            var zinOS = ZinOS.AppAPI;
 
             //tamed zinos api
             var tamedZinOS =
@@ -23,11 +23,12 @@
                 Storage: {
                     GetRootDirectories: zinOS.Storage.GetRootDirectories,
                     GetPathContent: zinOS.Storage.GetPathContent,
-                    SaveFile: zinOS.Storage.SaveFile,
-                    GetFileContent: zinOS.Storage.GetFileContent,
                     UploadFile: zinOS.Storage.UploadFile,
                     CreateDir: zinOS.Storage.CreateDir,
-                    DeleteFile: zinOS.Storage.DeleteFile
+                    DeleteFile: zinOS.Storage.DeleteFile,
+                    ReadFile:  zinOS.Storage.ReadFile,
+                    CreateFile: zinOS.Storage.CreateFile,
+                    WriteToFile: zinOS.Storage.WriteToFile
                 },
 
                 UI: {
@@ -42,8 +43,6 @@
             caja.whenReady(function () {
                 caja.markFunction(tamedZinOS.Storage.GetRootDirectories);
                 caja.markFunction(tamedZinOS.Storage.GetPathContent);
-                caja.markFunction(tamedZinOS.Storage.SaveFile);
-                caja.markFunction(tamedZinOS.Storage.GetFileContent);
                 caja.markFunction(tamedZinOS.Storage.UploadFile);
                 caja.markFunction(tamedZinOS.Storage.CreateDir);
                 caja.markFunction(tamedZinOS.UI.Prompt);
@@ -52,6 +51,9 @@
                 caja.markFunction(tamedZinOS.UI.SaveFileDialog);
                 caja.markFunction(tamedZinOS.UI.UploadFileDialog);
                 caja.markFunction(tamedZinOS.Storage.DeleteFile);
+                caja.markFunction(tamedZinOS.Storage.ReadFile);
+                caja.markFunction(tamedZinOS.Storage.CreateFile);
+                caja.markFunction(tamedZinOS.Storage.WriteToFile);
             });
 
             zinOSAppAPI = tamedZinOS;

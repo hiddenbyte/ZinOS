@@ -7,7 +7,7 @@ namespace ZinOS.Repositories.Definitions
 {
     public interface IUnitOfWork : IDisposable
     {
-        void Init();
+        //void Init();
         void Commit();
         void Rollback();
     }

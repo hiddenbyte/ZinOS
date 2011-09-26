@@ -14,23 +14,23 @@ namespace ZinOS.Services.Implementation
     {
         //services
         private readonly IZinOSAppService _zinOSAppService;
-        private readonly IUserDropboxAccountService _userDropboxAccountService;
+        private readonly IZinOSDesktopDropboxAccount _desktopDropboxAccountService;
         private readonly IDesktopFileSystem _desktopFileSystem;
         //repositories
-        private readonly IZinOSDesktopRepository _zinOSDesktopRespository;
+        private readonly IZinOSDesktopRepository _zinOSDesktopRepository;
         //unifOfWorkFactory
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
-        public ZinOSDesktopServiceImpl(IUserDropboxAccountService userDropboxAccountService,
+        public ZinOSDesktopServiceImpl(IZinOSDesktopDropboxAccount desktopDropboxAccountService,
             IZinOSAppService zinOSAppService,
             IDesktopFileSystem desktopFileSystemService,
-            IZinOSDesktopRepository zinOSDesktopRespository,
+            IZinOSDesktopRepository zinOSDesktopRepository,
             IUnitOfWorkFactory unitOfWorkFactory)
         {
             _zinOSAppService = zinOSAppService;
-            _userDropboxAccountService = userDropboxAccountService;
+            _desktopDropboxAccountService = desktopDropboxAccountService;
             _desktopFileSystem = desktopFileSystemService;
-            _zinOSDesktopRespository = zinOSDesktopRespository;
+            _zinOSDesktopRepository = zinOSDesktopRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
         }
 
@@ -51,8 +51,9 @@ namespace ZinOS.Services.Implementation
 
             using (var uow = _unitOfWorkFactory.Create())
             {
-                var desktop = _zinOSDesktopRespository.GetByKey(desktopId);
+                var desktop = _zinOSDesktopRepository.GetByKey(desktopId);
                 uow.Commit();
+
                 return desktop.InstalledApps.ToList();
             }
         }
@@ -63,11 +64,8 @@ namespace ZinOS.Services.Implementation
             {
                 try
                 {
-                    var desktop = _zinOSDesktopRespository.GetByKey(desktopId);
                     var app = _zinOSAppService.GetApp(zinOSAppId);
-
-                    desktop.InstalledApps.Add(app);
-                    _zinOSDesktopRespository.Update(desktop);
+                    _zinOSDesktopRepository.InstallApp(desktopId, app);
 
                     unit.Commit();
                 }
@@ -77,6 +75,11 @@ namespace ZinOS.Services.Implementation
                     throw;
                 }
             }
+        }
+
+        public void RemoveApp(int desktopId, int zinOSAppId)
+        {
+            _zinOSDesktopRepository.UninstallApp(desktopId, zinOSAppId);
         }
 
         public bool RunApp(int desktopId, int zinOSAppId)
@@ -92,17 +95,7 @@ namespace ZinOS.Services.Implementation
 
         public bool GetDropboxToken(int desktopId, out string accessToken, out string tokenSecret)
         {
-            using (IUnitOfWork unitOfWork = _unitOfWorkFactory.Create())
-            {
-                unitOfWork.Init();
-
-                ZinOSDesktop desktop = _zinOSDesktopRespository.GetByKey(desktopId);
-
-                if (_userDropboxAccountService.GetDropboxToken(desktop.DesktopUser.Id, out accessToken, out tokenSecret))
-                    return true;
-
-                return false;
-            }
+            return _desktopDropboxAccountService.GetDropboxToken(desktopId, out accessToken, out tokenSecret);
         }
 
         public IEnumerable<FileSystemItem> GetDesktopRootDirectories(int desktopId) 
@@ -117,7 +110,7 @@ namespace ZinOS.Services.Implementation
 
         public int GetDesktopIdByUserId(int userId)
         {
-            var desktops = _zinOSDesktopRespository.GetAllByUserId(userId).ToList();
+            var desktops = _zinOSDesktopRepository.GetAllByUserId(userId).ToList();
             var count = desktops.Count();
 
             if (desktops == null || count == 0 || count > 1)
@@ -150,16 +143,25 @@ namespace ZinOS.Services.Implementation
             return _desktopFileSystem.GetFile(desktopId, new FileSystemItem { Path = filePath });
         }
 
-        public bool UpdateFile(int desktopUserId, string filePath, string fileContent)
+        public bool UpdateFile(int desktopUserId, string targetFileNamePath, string base64String)
         {
             var desktopId = GetDesktopIdByUserId(desktopUserId);
-            return _desktopFileSystem.UpdateFile(desktopId, filePath, fileContent);
+            var fileContent = Convert.FromBase64String(base64String);
+            return _desktopFileSystem.UpdateFile(desktopId, targetFileNamePath, fileContent);
         }
 
-        public bool CreateFile(int desktopUserId, string targetPath, string fileName, Stream fileStream)
+        public string CreateFile(int desktopUserId, string targetPath, string fileName, Stream fileStream)
         {
             var desktopId = GetDesktopIdByUserId(desktopUserId);
             return _desktopFileSystem.CreateFile(desktopId, targetPath, fileName, fileStream);
+        }
+
+        public string CreateFile(int desktopUserId, string targetFileNamePath, string base64String)
+        {
+            var destkopId = GetDesktopIdByUserId(desktopUserId);
+            var fileData = Convert.FromBase64String(base64String);
+
+            return _desktopFileSystem.CreateFile(destkopId, targetFileNamePath, fileData);
         }
 
         public bool CreateDirectory(int desktopUserId, string dirPath)
@@ -177,7 +179,12 @@ namespace ZinOS.Services.Implementation
 
         public void CreateDesktop(ZinOSDesktop newDesktop)
         {
-            _zinOSDesktopRespository.Add(newDesktop);
+            _zinOSDesktopRepository.Add(newDesktop);  
+        }
+
+        public void PrepareFileSystem(ZinOSDesktop desktop)
+        {
+            _desktopFileSystem.PrepareFileSystem(desktop.Id);
         }
     }
 }

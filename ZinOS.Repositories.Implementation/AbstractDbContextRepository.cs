@@ -18,9 +18,7 @@ namespace ZinOS.Repositories.Implementation
 
         protected ZinOSDbContext CurrentContext
         {
-            get {
-                return UnitOfWorkFactory.CurrentContext;
-            }
+            get { return UnitOfWorkFactory.CurrentContext; }
         }
 
         public virtual void Add(TEntity entity)

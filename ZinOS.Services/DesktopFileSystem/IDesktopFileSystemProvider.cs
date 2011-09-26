@@ -10,8 +10,10 @@ namespace ZinOS.Services.Definitions.DesktopFileSystem
         IEnumerable<FileSystemItem> GetChildrenItems(int desktopId, FileSystemItem parent);
         Stream GetFile(int desktopId, FileSystemItem fileSystemItem);
         bool UpdateFile(int desktopId, string filePath, byte[] fileBytes);
-        bool CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream);
+        string CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream);
+        string CreateFile(int destkopId, string targetFileNamePath, Stream fileData);
         bool CreateDirectory(int desktopId, string dirPath);
         bool DeleteFile(int desktopId, string filePath);
+        bool PrepareFileSystem(int desktopId);
     }
 }

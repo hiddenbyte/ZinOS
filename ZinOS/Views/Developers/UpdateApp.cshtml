@@ -7,13 +7,16 @@
 
 <h2>@Model.Name - @Model.Description</h2>
 @using (Html.BeginForm("UpdateApp", "Developers", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{            
+{       
+    <div>
+        @Html.ValidationSummary()
+    </div>     
     <div>
         <label for="appFiles">ZinOS App package (*.zip)</label>
         <input id="zinOSAppZipFile" type="file" name="zinOSAppZipFile" />
         <input id="zinOSAppId" type="hidden" name="zinOSAppId" value="@Model.Id" />
     </div>
     <div>
-        <input type="submit" value="Update" />
+        <input type="submit" value="Update App" />
     </div>
 }

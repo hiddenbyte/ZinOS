@@ -112,5 +112,22 @@ namespace ZinOS.Areas.Desktop.Controllers
                 return ZinOSAjaxErrorMessage();
             }
         }
+
+        //
+        // POST: /Desktop/Main/UnistallApplication
+        [HttpPost]
+        public ActionResult UnistallApplication(int applicationId, int desktopId)
+        {
+            try
+            {
+                _zinOSDesktopService.RemoveApp(desktopId, applicationId);
+                return ZinOSAjaxMessage(true);
+            }
+            catch (Exception)
+            {
+                return ZinOSAjaxErrorMessage();
+            }
+        }
+
     }
 }

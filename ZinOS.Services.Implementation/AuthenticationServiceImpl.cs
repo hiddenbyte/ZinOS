@@ -1,7 +1,7 @@
 ﻿using System;
-using ZinOS.Services.Definitions;
 using ZinOS.Data.Entities;
 using ZinOS.Services.Definitions.Authentication;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.Services.Implementation
 {

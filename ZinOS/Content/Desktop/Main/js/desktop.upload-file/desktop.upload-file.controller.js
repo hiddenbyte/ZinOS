@@ -4,9 +4,8 @@
     if (!window.ZinOS.Desktop)
         window.ZinOS.Desktop = {};
 
-    var uploadFileController = function () {
+    var uploadFileController = function (uploadFileView) {
         this.UploadFile = function (targetPath, onfileselect) {
-            var uploadFileView = new ZinOS.Desktop.UploadFileView();
             uploadFileView.UploadFile(targetPath, function (file) {
                 uploadFileView.Close();
                 onfileselect(file);

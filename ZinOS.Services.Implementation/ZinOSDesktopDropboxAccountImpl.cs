@@ -1,5 +1,6 @@
 ﻿using ZinOS.Repositories.Definitions;
 using ZinOS.Services.Definitions;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.Services.Implementation
 {
@@ -23,8 +24,6 @@ namespace ZinOS.Services.Implementation
         {
             using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                unitOfWork.Init();
-
                 var desktop = _zinOSDesktopRespository.GetByKey(desktopId);
 
                 return _userDropboxAccountService.GetDropboxToken(desktop.DesktopUser.Id, out accessToken, out tokenSecret);

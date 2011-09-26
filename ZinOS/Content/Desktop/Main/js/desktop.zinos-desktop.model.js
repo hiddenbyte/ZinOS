@@ -41,6 +41,18 @@
                 });
         };
 
+        this.UnistallZinOSApp = function(zinOSAppId, callback) {
+            ZinOS.AsyncHTTPRequest(
+                '/Desktop/Main/UnistallApplication',
+                'POST',
+                { desktopId: desktopId, applicationId: zinOSAppId },
+                function(msg) {
+                    if (msg.Type == ZinOS.MessageType.Success) {
+                        callback(msg.MessageData);
+                    }
+                });
+        };
+
         this.RunZinOSApp = function (zinOsAppId, callback) {
             ZinOS.AsyncHTTPRequest('/Desktop/Main/LoadApplication',
                 'GET',

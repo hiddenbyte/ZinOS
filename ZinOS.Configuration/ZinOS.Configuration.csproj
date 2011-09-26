@@ -54,7 +54,6 @@
     <Compile Include="Ninject\ZinOSRepositoriesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ZinOS.Repositories.Definitions\ZinOS.Repositories.Definitions.csproj">
       <Project>{75E4AEE2-4E27-4C42-A91F-893B5CA9B5EF}</Project>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ZinOS.Services.Definitions.Types
+﻿namespace ZinOS.Services.Definitions.Types
 {
     public class OAuthEndpoints
     {

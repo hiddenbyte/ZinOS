@@ -7,12 +7,12 @@ namespace ZinOS.Mvc
     {
         private readonly ZinOsJsonMessage<TData> _data;
 
-        public ZinOSAjaxMessageResult(TData data, MessageType messageType) : base() 
+        public ZinOSAjaxMessageResult(TData data, MessageType messageType)
         {
-            this.JsonRequestBehavior = System.Web.Mvc.JsonRequestBehavior.AllowGet;
+            JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             _data.MessageData = data;
             _data.Type = messageType;
-            this.Data = _data;
+            Data = _data;
         }
     }
 }

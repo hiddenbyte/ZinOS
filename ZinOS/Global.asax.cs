@@ -37,7 +37,7 @@ namespace ZinOS
             );
         }
 
-        protected override Ninject.IKernel CreateKernel()
+        protected override IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             kernel.Load(Assembly.Load("ZinOS.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"));

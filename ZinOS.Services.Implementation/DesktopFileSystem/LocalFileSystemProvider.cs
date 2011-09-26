@@ -28,10 +28,6 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
 
         public FileSystemItem GetRoot(int desktopId)
         {
-            string desktopLocalFileSystemPath = String.Format("{0}{1}", ApplicationSettings.Setting.DesktopsLocalFileSystemRootRelativePath, desktopId);
-
-            _localFileSystemService.CreateDirectoryIfNotExists(FileSystemRoot.Main, desktopLocalFileSystemPath);
-
             return new FileSystemItem
                        {
                            IsDirectory = true,
@@ -73,16 +69,20 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
         {
             var desktopFilePath = GetLocalFileSystemRelativePath(desktopId, filePath);
             var memoryStream = new MemoryStream(fileBytes);
-            _localFileSystemService.Save(FileSystemRoot.Main, desktopFilePath, memoryStream);
+            _localFileSystemService.UpdateFile(FileSystemRoot.Main, desktopFilePath, memoryStream);
             return true;
         }
 
-        public bool CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
+        public string CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
         {
             var fileRelative = String.Format("{0}\\{1}", targetPath, fileName);
-            var fullDesktopPath = GetLocalFileSystemRelativePath(desktopId, fileRelative);
+            return CreateFile(desktopId, fileRelative, fileStream);
+        }
 
-            return _localFileSystemService.SaveStreamToFile(FileSystemRoot.Main, fullDesktopPath, fileStream, true);
+        public string CreateFile(int destkopId, string targetFileNamePath, Stream fileStream)
+        {
+            var desktopTargetFileNamePath = GetLocalFileSystemRelativePath(destkopId, targetFileNamePath);
+            return _localFileSystemService.CreateFile(FileSystemRoot.Main, desktopTargetFileNamePath, fileStream);
         }
 
         public bool CreateDirectory(int desktopId, string dirPath)
@@ -95,6 +95,12 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
         {
             filePath = GetLocalFileSystemRelativePath(desktopId, filePath);
             return _localFileSystemService.DeleteFile(FileSystemRoot.Main, filePath);
+        }
+
+        public bool PrepareFileSystem(int desktopId)
+        {
+            string desktopLocalFileSystemPath = String.Format(@"{0}\{1}", ApplicationSettings.Setting.DesktopsLocalFileSystemRootRelativePath, desktopId);
+            return _localFileSystemService.CreateDirectoryIfNotExists(FileSystemRoot.Main, desktopLocalFileSystemPath);
         }
 
         #endregion

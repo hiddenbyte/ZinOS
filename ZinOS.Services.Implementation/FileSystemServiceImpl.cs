@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,14 +28,14 @@ namespace ZinOS.Services.Implementation
             return File.OpenRead(absFilePath);
         }
 
-        public void Save(FileSystemRoot root, string path, Stream fileStream)
+        public void UpdateFile(FileSystemRoot root, string path, Stream fileStream)
         {
             string rootPath;
 
             if (!_rootAbsolutePath.TryGetValue(root, out rootPath)) 
                 return;
 
-            var fileToSave = File.Create(Path.Combine(rootPath, path));
+            var fileToSave = File.Open(Path.Combine(rootPath, path),FileMode.Create, FileAccess.Write);
 
             int read;
             while ((read = fileStream.ReadByte()) != StreamEnd)
@@ -42,6 +43,38 @@ namespace ZinOS.Services.Implementation
 
             fileToSave.Flush();
             fileToSave.Close();
+        }
+
+        public string CreateFile(FileSystemRoot fileSystemRoot, string desktopTargetFileNamePath, Stream fileStream)
+        {
+            string rootPath;
+
+            if (!_rootAbsolutePath.TryGetValue(fileSystemRoot, out rootPath))
+                return null;
+
+            var fileToCreate = Path.Combine(rootPath, desktopTargetFileNamePath);
+
+            if(File.Exists(fileToCreate))
+            {
+                var fileName = Path.GetFileNameWithoutExtension(fileToCreate);
+                var fileExt = Path.GetExtension(fileToCreate);
+                var filePath = fileToCreate.Substring(0, fileToCreate.Length - (fileName.Length + fileExt.Length));
+
+                var i = 1;
+                do
+                {
+                    fileToCreate = String.Format("{0}{1}_{2}{3}", filePath, fileName, i++, fileExt);
+                } while (File.Exists(fileToCreate));
+            }
+
+            var newFileStream = File.Open(fileToCreate, FileMode.CreateNew, FileAccess.Write);
+            
+            fileStream.CopyTo(newFileStream);
+
+            newFileStream.Flush();
+            newFileStream.Close();
+
+            return Path.GetFileName(fileToCreate);
         }
 
         public IEnumerable<string> GetChildrenFileNames(FileSystemRoot root, string relativePath)
@@ -131,9 +164,9 @@ namespace ZinOS.Services.Implementation
             var rootAbsPath = getFileSystemRootAbsolutePath(fileSystemRoot);
             var desktopLocalFileSystemAbsPath = Path.Combine(rootAbsPath, desktopLocalFileSystemPath);
 
-            if (Directory.Exists(desktopLocalFileSystemAbsPath))
+            if (!Directory.Exists(desktopLocalFileSystemAbsPath))
             {
-                Directory.CreateDirectory(desktopLocalFileSystemPath);
+                Directory.CreateDirectory(desktopLocalFileSystemAbsPath);
                 return true;
             }
 

@@ -9,6 +9,7 @@ using System.Xml;
 using ZinOS.Repositories.Definitions;
 using ZinOS.Data.Entities;
 using ZinOS.Common;
+using ZinOS.Services.Definitions.GoogleCaja;
 
 namespace ZinOS.Services.Implementation
 {
@@ -21,13 +22,14 @@ namespace ZinOS.Services.Implementation
         //depends on these repositories:
         private readonly IZinOSAppRepository _zinOSAppRepository;
         private readonly IUsersRepository _usersRepository;
-
+ 
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public ZinOSAppServiceImpl(IFileSystemService fileSystemService,
             IGoogleCajaService googleCajaService,
             IZinOSAppRepository zinOSAppRepository,
-            IUnitOfWorkFactory unitOfWorkFactory, IUsersRepository usersRepository)
+            IUnitOfWorkFactory unitOfWorkFactory, 
+            IUsersRepository usersRepository)
         {
             _fileSystemService = fileSystemService;
             _googleCajaService = googleCajaService;
@@ -35,6 +37,8 @@ namespace ZinOS.Services.Implementation
             _usersRepository = usersRepository;
             _unitOfWorkFactory = unitOfWorkFactory;
         }
+
+        #region Constants / Settings (Private static properties)
 
         private static string MetadataFilename
         {
@@ -51,6 +55,21 @@ namespace ZinOS.Services.Implementation
                 return "index.html";
             }
         }
+
+        private static string ManifestXmlSchemaPath
+        {
+            get
+            {
+                return ApplicationSettings.Setting.ZinOSAppManifestXmlSchemaPath;
+            }
+        }
+
+        private static string ZinOSHostName
+        {
+            get { return ApplicationSettings.Setting.ZinOSHostName; }
+        }
+
+        #endregion
 
         #region ZinOSAppService members
 
@@ -73,7 +92,7 @@ namespace ZinOS.Services.Implementation
             //update app
             updatedApp.Id = zinOsAppId;
 
-            updatedApp.CajoledModule = GetCajoledModule(zinOSAppZipFile, zinOsAppId);
+            updatedApp.CajoledModule = Cajole(zinOSAppZipFile, zinOsAppId);
 
             _zinOSAppRepository.Update(updatedApp);
         }
@@ -86,24 +105,34 @@ namespace ZinOS.Services.Implementation
             //read manifest
             var app = ReadZipFileManifest(zinOSAppZipFile);
 
-            using (var uow = _unitOfWorkFactory.Create())
+            //create app (to obtain app id) 
+            using (var uow = _unitOfWorkFactory.Create(true))
             {
-                app.Owner = _usersRepository.GetByKey(ownerUserId);
-                _zinOSAppRepository.Add(app);
-                uow.Commit();
+                try
+                {
+                    app.Owner = _usersRepository.GetByKey(ownerUserId);
+                    _zinOSAppRepository.Add(app);
+                    uow.Commit();
+                }
+                catch(Exception)
+                {
+                    uow.Rollback();
+                    throw;
+                }
             }
 
+            //cajoling
             try
             {
-                app.CajoledModule = GetCajoledModule(zinOSAppZipFile, app.Id);
+                app.CajoledModule = Cajole(zinOSAppZipFile, app.Id);
                 _zinOSAppRepository.Update(app);
             }
             catch (Exception)
             {
                 _zinOSAppRepository.Remove(app);
+                zinOSAppZipFile.Dispose();
                 throw;
             }
-            
             zinOSAppZipFile.Dispose();
         }
 
@@ -142,9 +171,117 @@ namespace ZinOS.Services.Implementation
 
         #endregion 
 
+        #region Private instance methods
+
         private bool Exists(int appId)
         {
             return _zinOSAppRepository.Exists(appId);
+        }
+
+        private ZinOSApp ReadZipFileManifest(ZipFile zinOSZipFile)
+        {
+            //get manifest
+            var metadataZipEntry = zinOSZipFile[MetadataFilename];
+
+            //extract manifest file
+            var manifestFileStream = new MemoryStream();
+            metadataZipEntry.Extract(manifestFileStream);
+            manifestFileStream.Position = 0;
+
+            var app = CreateZinOSAppFromAppManifest(manifestFileStream);
+
+            ThrowValidationExceptionIfIconNotFound(zinOSZipFile, app.UserInterfaceConfiguration.Icon);
+
+            return app;
+        }
+
+        private ZinOSApp CreateZinOSAppFromAppManifest(Stream xmlMetadataStream)
+        {
+            XmlDocument metadataDocument;
+            (metadataDocument = new XmlDocument()).Load(xmlMetadataStream);
+
+            //Load XSD for validation!
+            var manifestXsdStream
+                = _fileSystemService.GetFileStream(FileSystemRoot.Main, ManifestXmlSchemaPath);
+
+            var manifestSchema
+                = XmlSchema.Read(manifestXsdStream, (sender, args) => { });
+
+            metadataDocument.Schemas.Add(manifestSchema);
+
+            //validate!
+            var errors = new List<ValidationError>();
+            metadataDocument.Validate((sender, args) =>
+            {
+                if (args.Severity == XmlSeverityType.Error)
+                    errors.Add(new ValidationError(MetadataFilename, String.Format("{0} - {1}", MetadataFilename, args.Message)));
+            });
+
+            if (errors.Count > 0) //Has validation erros ?
+                throw new ValidationException(errors);
+
+            var app = new ZinOSApp();
+
+            var zinosApp = metadataDocument.GetElementsByTagName("zinosApp")[0];
+
+            // ReSharper disable PossibleNullReferenceException
+            app.Name = zinosApp.SelectSingleNode("name").InnerText;
+            app.Description = zinosApp.SelectSingleNode("description").InnerText;
+            app.Version = Int32.Parse(zinosApp.SelectSingleNode("version").InnerText);
+            // ReSharper restore PossibleNullReferenceException
+
+            var zinOSAppUIConfig = new ZinOSAppUserInterfaceConfiguration();
+            var ui = zinosApp.SelectSingleNode("ui");
+            if (ui != null)
+            {
+                string innerText;
+
+                if (GetInnerText(ui, "icon", out innerText))
+                    zinOSAppUIConfig.Icon = innerText;
+
+                var window = ui.SelectSingleNode("window");
+
+                if (window != null)
+                {
+                    if (GetInnerText(window, "defaultWidth", out innerText))
+                        zinOSAppUIConfig.DefaultWidth = Int32.Parse(innerText);
+
+                    if (GetInnerText(window, "defaultHeight", out innerText))
+                        zinOSAppUIConfig.DefaultHeight = Int32.Parse(innerText);
+
+                    if (GetInnerText(window, "resizable", out innerText))
+                        zinOSAppUIConfig.Resizable = Boolean.Parse(innerText);
+                }
+            }
+
+            app.UserInterfaceConfiguration = zinOSAppUIConfig;
+
+            return app;
+        }
+
+        private string Cajole(ZipFile zinOSZipFile, int zinOSappId)
+        {
+            string zinOsAppResourcesRoot = ApplicationSettings.Setting.ZinOSAppResourcesRootPath;
+            var zinOsAppResourcesPath = String.Format(@"{0}\{1}", zinOsAppResourcesRoot, zinOSappId);
+            var zinOsAppResourcesAbsolutePath = _fileSystemService.CreateDirectory(FileSystemRoot.Main,
+                                                                                   zinOsAppResourcesPath);
+
+            zinOSZipFile.ExtractAll(zinOsAppResourcesAbsolutePath, ExtractExistingFileAction.OverwriteSilently);
+
+            var appUrl = GenerateUnCajoledAppUrl(zinOSappId);
+
+            var result = _googleCajaService.Cajole(appUrl);
+
+            return result.JavascriptModule;
+        } 
+        
+        #endregion
+
+        #region Private static methods
+
+        private static string GenerateUnCajoledAppUrl(int appId)
+        {
+            return String.Format(@"http://{0}/Desktop/Resources__/{1}/index.html", ZinOSHostName, appId);
         }
 
         private static void ThrowValidationExceptionIfNotValid(ZipFile file)
@@ -176,23 +313,6 @@ namespace ZinOS.Services.Implementation
                 throw new ValidationException("manifest.xml", string.Format("{1} - The specified app icon ({0}) does not exist.", iconPath, MetadataFilename));
         }
 
-        private static ZinOSApp ReadZipFileManifest(ZipFile zinOSZipFile)
-        {
-            //get manifest
-            var metadataZipEntry = zinOSZipFile[MetadataFilename];
-
-            //extract manifest file
-            var manifestFileStream = new MemoryStream();
-            metadataZipEntry.Extract(manifestFileStream);
-            manifestFileStream.Position = 0;
-
-            var app = CreateZinOSAppFromAppManifest(manifestFileStream);
-
-            ThrowValidationExceptionIfIconNotFound(zinOSZipFile, app.UserInterfaceConfiguration.Icon);
-
-            return app;
-        }
-
         private static ZipFile ReadZipFile(Stream zipFileStream)
         {
             try
@@ -207,73 +327,10 @@ namespace ZinOS.Services.Implementation
             }
         }
 
-        private static ZinOSApp CreateZinOSAppFromAppManifest(Stream xmlMetadataStream)
-        {
-            XmlDocument metadataDocument;
-            (metadataDocument = new XmlDocument()).Load(xmlMetadataStream);
-           
-            //Load XSD for validation!
-            var manifestXsdStream 
-                = File.OpenRead(@"D:\development\ZinOS\ZinOS\ZinOS.Services.Implementation\ManifestSchema.xsd");
-            var manifestSchema
-                = XmlSchema.Read(manifestXsdStream, (sender, args) => { });
-
-            metadataDocument.Schemas.Add(manifestSchema);
-
-            //validate!
-            var errors = new List<ValidationError>();
-            metadataDocument.Validate((sender, args) =>
-                                          {
-                                              if (args.Severity == XmlSeverityType.Error)
-                                                  errors.Add(new ValidationError(MetadataFilename, String.Format("{0} - {1}", MetadataFilename,args.Message)));
-                                          });
-
-            if (errors.Count > 0) //Has validation erros ?
-                throw new ValidationException(errors);
-            
-            var app = new ZinOSApp();
-
-            var zinosApp = metadataDocument.GetElementsByTagName("zinosApp")[0];
-
-            // ReSharper disable PossibleNullReferenceException
-            app.Name = zinosApp.SelectSingleNode("name").InnerText;
-            app.Description = zinosApp.SelectSingleNode("description").InnerText;
-            app.Version = Int32.Parse(zinosApp.SelectSingleNode("version").InnerText);
-            // ReSharper restore PossibleNullReferenceException
-            
-            var zinOSAppUIConfig = new ZinOSAppUserInterfaceConfiguration();
-            var ui = zinosApp.SelectSingleNode("ui");
-            if (ui != null)
-            {
-                string  innerText;
-
-                if (GetInnerText(ui, "icon", out innerText))
-                    zinOSAppUIConfig.Icon = innerText;
-
-                var window = ui.SelectSingleNode("window");
-
-                if (window != null)
-                {
-                    if (GetInnerText(window, "defaultWidth", out innerText))
-                        zinOSAppUIConfig.DefaultWidth = Int32.Parse(innerText);
-
-                    if (GetInnerText(window, "defaultHeight", out innerText))
-                        zinOSAppUIConfig.DefaultHeight = Int32.Parse(innerText);
-
-                    if (GetInnerText(window, "resizable", out innerText))
-                        zinOSAppUIConfig.Resizable = Boolean.Parse(innerText);
-                }
-            }
-
-            app.UserInterfaceConfiguration = zinOSAppUIConfig;
-            
-            return app;
-        }
-
         private static bool GetInnerText(XmlNode parent, string xpath, out string innerText)
         {
             var node = parent.SelectSingleNode(xpath);
-            
+
             if (node != null)
             {
                 innerText = node.InnerText;
@@ -284,20 +341,6 @@ namespace ZinOS.Services.Implementation
             return false;
         }
 
-        private string GetCajoledModule(ZipFile zinOSZipFile, int zinOSappId)
-        {
-            string zinOsAppResourcesRoot = ApplicationSettings.Setting.ZinOSAppResourcesRootPath;
-            var zinOsAppResourcesPath = String.Format(@"{0}\{1}", zinOsAppResourcesRoot, zinOSappId);
-            var zinOsAppResourcesAbsolutePath = _fileSystemService.CreateDirectory(FileSystemRoot.Main,
-                                                                                   zinOsAppResourcesPath);
-            
-            zinOSZipFile.ExtractAll(zinOsAppResourcesAbsolutePath, ExtractExistingFileAction.OverwriteSilently);
-
-            var appUrl = String.Format("http://localhost:49545/Desktop/Resources__/{0}/index.html", zinOSappId);
-
-            var result = _googleCajaService.Cajole(appUrl);
-
-            return result.JavascriptModule;
-        }
+        #endregion
     }
 }

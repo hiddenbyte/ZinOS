@@ -12,13 +12,13 @@
 
             //create window...
             uploadWindow = dom.CreateWindow({
-                    title: 'Upload file',
-                    draggable: false,
-                    resizable: false,
-                    modal: true,
-                    width: 250,
-                    height: 150
-                });
+                title: 'Upload file',
+                draggable: false,
+                resizable: false,
+                modal: true,
+                width: 250,
+                height: 150
+            });
 
             //render user interface...
             uploadWindow.addClass('upload-file');
@@ -42,6 +42,7 @@
         this.Close = function () {
             uploadWindow.dialog('close');
             uploadWindow.dialog('destroy');
+            uploadWindow.remove();
         };
     };
 

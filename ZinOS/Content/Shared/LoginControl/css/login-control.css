@@ -20,6 +20,11 @@ div.login-control > input
     width: 90%;
 }
 
+div.login-control > input.wrongLogin
+{
+    background-color: rgb(255, 149, 149);   
+}
+
 div.login-control > div.label
 {
     font-size:12px;

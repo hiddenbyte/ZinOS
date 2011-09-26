@@ -1,41 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Web;
 using ZinOS.Repositories.Definitions;
 
 namespace ZinOS.Repositories.Implementation
 {
     public class DbContextUnitOfWorkFactory : IUnitOfWorkFactory
     {
-        [ThreadStatic]
-        private static DbContextUnitOfWork _current;
+        private const string CurrentDbContextUnitOfWorkStack = "DbContextUnitOfWorkStack";
 
-        public IUnitOfWork Create()
-        {
-            _current = new DbContextUnitOfWork(this);
-            return _current;
-        }
-
-        internal ZinOSDbContext CurrentContext 
+        private Stack<ZinOSDbContext> DbContextUnitOfWorkStack
         {
             get
             {
-                if (_current == null)
-                {
-                    return new ZinOSDbContext();
-                }
-                else 
-                {
-                    return _current.DbContext;
-                }
+                var stack = HttpContext.Current.Items[CurrentDbContextUnitOfWorkStack] ?? 
+                    (HttpContext.Current.Items[CurrentDbContextUnitOfWorkStack] = new Stack<ZinOSDbContext>());
+                return stack as Stack<ZinOSDbContext>;
             }
         }
 
-        internal void Release(DbContextUnitOfWork dbContextUnitOfWork)
+        public IUnitOfWork Create()
         {
-            if (_current == dbContextUnitOfWork)
-                _current = null;
+            return Create(false);
+        }
+
+        public IUnitOfWork Create(bool ignoreNesting)
+        {
+            return CreateZinOSDbContext(ignoreNesting);
+        }
+
+        internal ZinOSDbContext CreateZinOSDbContext(bool ignoreNesting)
+        {
+            ZinOSDbContext context;
+
+            if (DbContextUnitOfWorkStack.Count == 0)
+            {
+                context = new ZinOSDbContext(this);
+                DbContextUnitOfWorkStack.Push(context);
+            }
+            else
+            {
+                if (ignoreNesting)
+                {
+                    context = new ZinOSDbContext(this);
+                    DbContextUnitOfWorkStack.Push(context);
+                }
+                else
+                {
+                    context = DbContextUnitOfWorkStack.Peek();
+                    context.IncreaseNestingLevel();
+                }
+            }
+
+            return context;
+        }
+
+        internal ZinOSDbContext CurrentContext
+        {
+            get { return CreateZinOSDbContext(false); }
+        }
+
+        internal void Release(ZinOSDbContext dbContextUnitOfWork)
+        {
+            if (DbContextUnitOfWorkStack.Peek() == dbContextUnitOfWork)
+                DbContextUnitOfWorkStack.Pop();
         }
     }
 }

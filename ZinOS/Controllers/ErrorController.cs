@@ -11,5 +11,11 @@ namespace ZinOS.Controllers
         {
             return View("404");
         }
+
+        [HttpGet]
+        public ActionResult NotAuthorized()
+        {
+            return View();
+        }
     }
 }

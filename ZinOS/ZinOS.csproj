@@ -78,6 +78,7 @@
     <Compile Include="Areas\Desktop\ViewModels\Main\Index.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Mvc\ZinOSBase64StreamResult.cs" />
     <Compile Include="Utils\StreamUtils.cs" />
     <Compile Include="ViewModels\Developers\MyApps.cs" />
     <Compile Include="Mvc\ZinOSAjaxMessageResult.cs" />
@@ -96,9 +97,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AuthenticationHelper.cs" />
-    <Compile Include="Utils\ControllerUtils.cs" />
     <Compile Include="Utils\ScriptHelper.cs" />
     <Compile Include="ViewModels\User\Create.cs" />
+    <Compile Include="ViewModels\User\Edit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Desktop\Main\css\upload-file.css" />
@@ -109,6 +110,8 @@
     <Content Include="Content\Desktop\Main\js\desktop.file-system\desktop.file-system.model.js" />
     <Content Include="Content\Desktop\Main\js\desktop.my-apps.controller.js" />
     <Content Include="Content\Desktop\Main\js\desktop.my-apps.view.js" />
+    <Content Include="Content\Desktop\Main\js\desktop.remove-apps.controller.js" />
+    <Content Include="Content\Desktop\Main\js\desktop.remove-apps.view.js" />
     <Content Include="Content\Desktop\Main\js\desktop.save-file\desktop.save-file.control.js" />
     <Content Include="Content\Desktop\Main\js\desktop.save-file\desktop.save-file.view.js" />
     <Content Include="Content\Desktop\Main\js\desktop.taskbar.controller.js" />
@@ -120,9 +123,14 @@
     <Content Include="Content\Desktop\Main\js\desktop.zinos-app.view.js" />
     <Content Include="Content\Desktop\Main\js\desktop.zinos-desktop.model.js" />
     <Content Include="Content\Desktop\Main\js\desktop.zinos-desktop.controller.js" />
-    <Content Include="Content\Desktop\Main\Layout\basic.css" />
-    <Content Include="Content\Desktop\Main\Layout\teste-wallpaper.jpg" />
+    <Content Include="Content\Desktop\Main\css\basic.css" />
     <Content Include="Content\Desktop\Main\css\save-file.css" />
+    <Content Include="Content\Desktop\ZinOSApp\js\zinos-app.api.storage.js" />
+    <Content Include="Content\Desktop\ZinOSApp\js\zinos-app.api.storage.stream.js" />
+    <Content Include="Content\Desktop\ZinOSApp\js\zinos-app.api.storage.streamwriter.js" />
+    <Content Include="Content\Desktop\ZinOSApp\js\zinos-app.api.ui.js" />
+    <Content Include="Content\Shared\css\jquery.fileupload\jquery.fileupload-ui.css" />
+    <Content Include="Content\Shared\css\jquery.fileupload\pbar-ani.gif" />
     <Content Include="Content\Shared\js\google-caja\caja.js" />
     <Content Include="Content\Shared\js\google-caja\es53-guest-frame.opt.js" />
     <Content Include="Content\Shared\js\google-caja\es53-taming-frame.opt.js" />
@@ -146,6 +154,9 @@
     <Content Include="Content\Shared\jQueryUI\flick\images\ui-icons_ff0084_256x240.png" />
     <Content Include="Content\Shared\jQueryUI\flick\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\Shared\jQueryUI\flick\jquery-ui-1.8.14.custom.css" />
+    <Content Include="Content\Shared\js\jquery.fileupload\jquery.fileupload-ui.js" />
+    <Content Include="Content\Shared\js\jquery.fileupload\jquery.fileupload.js" />
+    <Content Include="Content\Shared\js\jquery.fileupload\jquery.iframe-transport.js" />
     <Content Include="Content\Shared\ZinOS\zinos.core.dom.js" />
     <Content Include="Content\Shared\ZinOS\zinos.core.http.js" />
     <Content Include="Content\Shared\ZinOS\zinos.core.ui.js" />
@@ -169,6 +180,7 @@
     <Content Include="Content\Shared\ZinOS\zinos.core.js" />
     <Content Include="Content\Shared\images\defaultAppIcon.png" />
     <Content Include="Content\User\Create\css\user.create.css" />
+    <Content Include="Content\User\Edit\css\user.edit.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -273,9 +285,6 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Desktop\Views\ZinOSApp\Run.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Error\404.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +308,18 @@
   <ItemGroup>
     <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developers\AppUpdated.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\NotAuthorized.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\UserEdited.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developers\QuickStart.cshtml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -315,7 +336,7 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>49545</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>

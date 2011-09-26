@@ -2,6 +2,7 @@
 using ZinOS.Mvc;
 using ZinOS.Services.Definitions;
 using ZinOS.OAuth;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.Controllers
 {
@@ -55,10 +56,41 @@ namespace ZinOS.Controllers
         }
 
         [HttpGet]
+        public ActionResult UserEdited()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Edit()
         {
             var user = _userService.GetUserById(CurrentUserId);
             return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ViewModels.User.Edit userEditModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var user = _userService.GetUserById(CurrentUserId);
+                return View(user);
+            }
+
+            try
+            {
+                _userService.ChangeUserPassword(CurrentUserId,userEditModel.Password);
+            }
+            catch (ValidationException validationException)
+            {
+                foreach (var error in validationException.Errors)
+                    ModelState.AddModelError(error.ErrorKey, error.ErrorMessage);
+            }
+
+            if (ModelState.IsValid)
+                return RedirectToAction("UserEdited");
+
+            return View(_userService.GetUserById(CurrentUserId));
         }
 
         [HttpGet]

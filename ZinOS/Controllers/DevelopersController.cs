@@ -20,6 +20,11 @@ namespace ZinOS.Controllers
             return RedirectToAction("MyApps");
         }
 
+        public ActionResult QuickStart()
+        {
+            return View();
+        }
+
         //
         // GET: /Developers/MyApps
         [HttpGet]
@@ -27,9 +32,10 @@ namespace ZinOS.Controllers
         {
             var apps = _zinOsAppService.GetAllAppsByUserId(CurrentUserId);
 
-            ViewData.Model = new ViewModels.Developers.MyApps {
-                UserApps = apps
-            };
+            ViewData.Model = new ViewModels.Developers.MyApps
+                                 {
+                                     UserApps = apps
+                                 };
 
             return View();
         }
@@ -65,7 +71,7 @@ namespace ZinOS.Controllers
         //
         // GET: /Developers/AppSubmited
         [HttpGet]
-        public ActionResult AppSubmited() 
+        public ActionResult AppSubmited()
         {
             return View();
         }
@@ -95,7 +101,16 @@ namespace ZinOS.Controllers
                     ModelState.AddModelError(error.ErrorKey, error.ErrorMessage);
             }
 
-            return ModelState.IsValid ? RedirectToAction("AppSubmited") as ActionResult : View();
+            return ModelState.IsValid
+                       ? (ActionResult) RedirectToAction("AppUpdated")
+                       : View("UpdateApp", _zinOsAppService.GetApp(zinOSAppId));
         }
+
+        [HttpGet]
+        public ActionResult AppUpdated()
+        {
+            return View();
+        }
+    
     }
 }

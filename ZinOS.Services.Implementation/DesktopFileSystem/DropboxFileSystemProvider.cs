@@ -77,15 +77,16 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
             return _dropboxService.UpdateFileStream(accessToken, tokenSecret, dropboxFormatPath, fileBytes);
         }
 
-        public bool CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
+        public string CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
         {
             string accessToken;
             string tokenSecret;
 
             if (!GetDesktopDropboxToken(desktopId, out accessToken, out tokenSecret))
-                return false;
+                return null;
 
             var dropboxFormatTargetPath = String.Format("{0}/{1}", FormatToDropboxPath(targetPath), fileName);
+
             return _dropboxService.CreateFile(accessToken, tokenSecret, dropboxFormatTargetPath, fileStream);
         }
 
@@ -113,6 +114,24 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
             var dropboxFormatFilePath = FormatToDropboxPath(filePath);
 
             return _dropboxService.DeleteFile(accessToken, tokenSecret, dropboxFormatFilePath);
+        }
+
+        public bool PrepareFileSystem(int desktopId)
+        {
+            return true;
+        }
+
+        public string CreateFile(int desktopId, string targetFileNamePath, Stream fileData)
+        {
+            string accessToken;
+            string tokenSecret;
+
+            if (!GetDesktopDropboxToken(desktopId, out accessToken, out tokenSecret))
+                return null;
+
+            var dropboxFormatFilePath = FormatToDropboxPath(targetFileNamePath);
+
+            return _dropboxService.CreateFile(accessToken, tokenSecret, dropboxFormatFilePath, fileData);
         }
 
         private void FormatToZinOSPath(IEnumerable<FileSystemItem> items)

@@ -12,7 +12,7 @@
     if (!window.ZinOS.Core.DOM)
         window.ZinOS.Core.DOM = {};
 
-    var DOM = function () {
+    var dom = function() {
         /*
         * @method Append
         * @args { 
@@ -22,7 +22,7 @@
         *       }
         * @returns DOMElement
         */
-        this.Append = function (args) {
+        this.Append = function(args) {
             if (args.targetElementId && args.elementToAppend)
                 $('#' + args.targetElementId).append(args.elementToAppend);
 
@@ -35,7 +35,7 @@
         * @args { html: #String# }
         * @returns DOMElement
         */
-        var CreateElement = this.CreateElement = function (args) {
+        var CreateElement = this.CreateElement = function(args) {
             if (args.html) {
                 var jqueryElem = $(args.html);
                 return jqueryElem.get(0);
@@ -47,17 +47,17 @@
         * @args { title: #String#, modal: #Boolean# }
         * @returns jQuery
         */
-        this.CreateWindow = function (args) {
-            return $('<div></div>').appendTo('body').dialog({ 
-                title: args.title,
-                modal: args.modal, 
-                resizable: args.resizable,
-                width: args.width,
-                height: args.height 
-            });
+        this.CreateWindow = function(args) {
+            return $('<div></div>').appendTo('body').dialog({
+                    title: args.title,
+                    modal: args.modal,
+                    resizable: args.resizable,
+                    width: args.width,
+                    height: args.height
+                });
         };
-    }
+    };
 
     //static class DOM
-    window.ZinOS.Core.DOM = new DOM();
+    window.ZinOS.Core.DOM = new dom();
 })();

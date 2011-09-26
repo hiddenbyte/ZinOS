@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web.Mvc;
 using ZinOS.ClientModels;
 using ZinOS.Utils;
@@ -7,6 +8,9 @@ namespace ZinOS.Mvc
 {
     public abstract class ZinOSController : Controller
     {
+        private const string ServerErrorOccurred = "Server Error Occurred";
+        private const int ServerErrorStatus = 500;
+
         protected int CurrentUserId
         {
             get { return AuthenticationHelper.GetCurrentAuthTicketUserId(); }
@@ -19,17 +23,26 @@ namespace ZinOS.Mvc
 
         protected ZinOSAjaxMessageResult<TData> ZinOSAjaxMessage<TData>(TData data)
         {
-            return ZinOSAjaxMessage<TData>(data, MessageType.Success);
+            return ZinOSAjaxMessage(data, MessageType.Success);
         }
 
         protected ZinOSAjaxMessageResult<string> ZinOSAjaxErrorMessage(string errorMessage)
         {
-            return ZinOSAjaxMessage<string>(errorMessage, MessageType.Error);
+            HttpContext.Response.StatusCode = ServerErrorStatus;
+            HttpContext.Response.StatusDescription = ServerErrorOccurred;
+            return ZinOSAjaxMessage(errorMessage, MessageType.Error);
         }
 
         protected ZinOSAjaxMessageResult<object> ZinOSAjaxErrorMessage()
         {
+            HttpContext.Response.StatusCode = ServerErrorStatus;
+            HttpContext.Response.StatusDescription = ServerErrorOccurred;
             return ZinOSAjaxMessage<object>(null, MessageType.Success);
+        }
+
+        protected ZinOSBase64StreamResult ZinOSBase64Stream(Stream stream)
+        {
+            return new ZinOSBase64StreamResult(stream);
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -50,7 +63,7 @@ namespace ZinOS.Mvc
                 return;
             }
 
-            filterContext.Result = new RedirectResult("/");
+            filterContext.Result = RedirectToAction("NotAuthorized", "Error");
         }
     }
 

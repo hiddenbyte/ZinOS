@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZinOS.Services.Definitions;
 using ZinOS.Mvc;
+using ZinOS.Services.Definitions.DesktopFileSystem;
 
 namespace ZinOS.Areas.Desktop.Controllers
 {
@@ -51,18 +52,28 @@ namespace ZinOS.Areas.Desktop.Controllers
 
         [HttpGet]
         public ActionResult GetFileContent(string filePath)
-        {  
+        {
             var stream = _zinOsDesktopService.GetFile(CurrentUserId, filePath);
-            return File(stream, "binary/octet-stream");
+
+            const string contentType = "binary/octet-stream";
+
+            return File(stream, contentType);
+        }
+
+        [HttpGet]
+        public ActionResult GetFileBinary(string filePath)
+        {
+            var stream = _zinOsDesktopService.GetFile(CurrentUserId, filePath);
+            return ZinOSBase64Stream(stream);
         }
 
         [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult SaveFile(string filePath, string content) 
+        [ActionName("UpdateFileUsingBase64String")]
+        public ActionResult UpdateFile(string targetFileNamePath, string base64String)
         {
             try
             {
-                var saved = _zinOsDesktopService.UpdateFile(CurrentUserId, filePath, content);
+                var saved = _zinOsDesktopService.UpdateFile(CurrentUserId, targetFileNamePath, base64String);
                 return ZinOSAjaxMessage(saved);
             }
             catch (Exception)
@@ -71,14 +82,14 @@ namespace ZinOS.Areas.Desktop.Controllers
                 return ZinOSAjaxErrorMessage();
             }
         }
-        
+
         [HttpPost]
-        public ActionResult UploadFile(string targetPath, HttpPostedFileBase uploadedFile)
+        public ActionResult CreateFile(string targetPath, HttpPostedFileBase newFile)
         {
             try
             {
-                var saved = _zinOsDesktopService.CreateFile(CurrentUserId, targetPath, uploadedFile.FileName,
-                                                            uploadedFile.InputStream);
+                var saved = _zinOsDesktopService.CreateFile(CurrentUserId, targetPath, newFile.FileName,
+                                                            newFile.InputStream);
                 return ZinOSAjaxMessage(saved);
             }
             catch (Exception)
@@ -86,6 +97,28 @@ namespace ZinOS.Areas.Desktop.Controllers
                 //TODO: log this exception
                 return ZinOSAjaxErrorMessage();
             }
+        }
+
+        [HttpPost]
+        [ActionName("CreateFileUsingBase64String")]
+        public ActionResult CreateFile(string targetFileNamePath, string base64String)
+        {
+            try
+            {
+                var result = _zinOsDesktopService.CreateFile(CurrentUserId, targetFileNamePath, base64String);
+                return ZinOSAjaxMessage(result);
+            }
+            catch(Exception)
+            {
+                //TODO: log this exception
+                return ZinOSAjaxErrorMessage();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateFile(string filePath, HttpPostedFileBase fileStream)
+        {
+            return null;
         }
 
         [HttpPost]

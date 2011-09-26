@@ -33,7 +33,6 @@ namespace ZinOS.Utils
                 return false;
 
             var ticket = FormsAuthentication.Decrypt(authTicketCookie.Value);
-
             return !ticket.Expired;
         }
 

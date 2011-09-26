@@ -14,7 +14,7 @@ namespace ZinOS.Utils
             [MarshalAs(UnmanagedType.LPWStr)] string pwzMimeProposed,
             int dwMimeFlags, out IntPtr ppwzMimeOut, int dwReserved);
 
-        public static string GetMimeFromFile(Stream fileStream, string fileName)
+        public static string GetStreamMime(Stream fileStream, string fileName)
         {
             IntPtr mimeout;
 
@@ -38,7 +38,7 @@ namespace ZinOS.Utils
             var mime = Marshal.PtrToStringUni(mimeout);
             Marshal.FreeCoTaskMem(mimeout);
 
-            return mime != null ? mime.ToLower() : "";
+            return mime != null ? mime.ToLower() : "binary/octet-stream";
         }
     }
 }

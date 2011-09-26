@@ -12,6 +12,14 @@
             type: type,
             dataType: 'json',
             data: data,
+            error: function (jqXHR, textStatus, errorThrown) {
+                var http = ZinOS.Core.HTTP;
+                if (http.ServerErrorHandler != undefined && http.ServerErrorHandler.constructor == Function) {
+                    http.ServerErrorHandler(textStatus, errorThrown);
+                } else {
+                    alert(errorThrown);
+                }
+            },
             success: function (data) {
                 callback(data);
             }

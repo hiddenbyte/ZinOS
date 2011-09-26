@@ -1,26 +1,51 @@
 ﻿ZinOS.DOMReady(function () {
+
+    //Create Models, Views and Controllers
+    
+    var removeAppsView = new ZinOS.Desktop.RemoveAppsView();
     var myAppsView = new ZinOS.Desktop.MyAppsView();
     var zinOSAppsinstallationView = new ZinOS.Desktop.ZinOSAppInstallationView();
+
     var zinosDesktopModel = new ZinOS.Desktop.ZinOSDesktopModel(ZinOS.Bag.DesktopId);
 
-    new ZinOS.Desktop.TaskBarController(
-        new ZinOS.Desktop.TaskBarView(), //ZinOS.Desktop.TaskBarView
-        myAppsView,  //ZinOS.Desktop.MyAppsView
-        zinOSAppsinstallationView, //ZinOS.Desktop.ZinOSAppInstallationView
-        zinosDesktopModel); //ZinOS.Desktop.ZinOSDesktopModel
+    var taskBarController = new ZinOS.Desktop.TaskBarController(
+        new ZinOS.Desktop.TaskBarView(),
+        myAppsView,
+        zinOSAppsinstallationView,
+        removeAppsView,
+        zinosDesktopModel);
 
     var zinosDesktopController = new ZinOS.Desktop.ZinOSDesktopController(
         zinosDesktopModel,
         new ZinOS.Desktop.ZinOSAppsView(),
         new ZinOS.Desktop.SaveFileController(new ZinOS.Desktop.SaveFileView(), new ZinOS.Desktop.FileSystemModel()),
-        new ZinOS.Desktop.UploadFileController()
+        new ZinOS.Desktop.UploadFileController(new ZinOS.Desktop.UploadFileView())
     );
 
-    new ZinOS.Desktop.MyAppsController(
-        myAppsView, //ZinOS.Desktop.MyAppsView
-        zinosDesktopController); //ZinOS.Desktop.ZinOSDesktopController
+    var myAppsController = new ZinOS.Desktop.MyAppsController(
+        myAppsView,
+        zinosDesktopController);
 
-    new ZinOS.Desktop.ZinOSAppInstallationController(
+    var appsInstallionController = new ZinOS.Desktop.ZinOSAppInstallationController(
         zinOSAppsinstallationView,
         zinosDesktopModel);
+
+    var removeAppsCintroler = new ZinOS.Desktop.RemoveAppsController(removeAppsView, zinosDesktopModel);
+
+    //Set ZinOSDesktopController instance for ZinOS App API
+    ZinOS.AppAPI.setCurrentDesktopController(zinosDesktopController);
+    
+    //Ajax Async Server Error Handler
+    ZinOS.Core.HTTP.ServerErrorHandler = function (error, errorThrown) {
+        var dom = ZinOS.Core.DOM;
+        var errorWindow = dom.CreateWindow({
+            title: 'Error',
+            draggable: false,
+            resizable: false,
+            modal: true,
+            width: 250,
+            height: 150
+        });
+        errorWindow.text(errorThrown);
+    };
 });

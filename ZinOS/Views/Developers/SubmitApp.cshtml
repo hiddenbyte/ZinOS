@@ -3,6 +3,11 @@
     ViewBag.SubTitle = "Submit App";
     Layout = "~/Views/Developers/_Layout.cshtml";
 }
+
+@section HeaderContent
+{
+    
+}
         
 @using (Html.BeginForm("SubmitApp", "Developers", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {      
@@ -14,6 +19,6 @@
         <input id="zinOSAppZipFile" type="file" name="zinOSAppZipFile" />
     </div>
     <div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit App" />
     </div>
 }

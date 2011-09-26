@@ -4,10 +4,8 @@
     if (!window.ZinOS.Desktop)
         window.ZinOS.Desktop = {};
 
-    var SaveFileController = function (saveFileView, fileSystemModel) {
+    var saveFileController = function (saveFileView, fileSystemModel) {
         this.SaveFile = function (filename, onsave) {
-            var saveFileView = new ZinOS.Desktop.SaveFileView();
-
             //On Folder Click
             saveFileView.RegisterOpenFolderHandler(function (folderPath) {
                 fileSystemModel.GetPathContent(folderPath, function (content) {
@@ -39,5 +37,5 @@
         };
     };
 
-    window.ZinOS.Desktop.SaveFileController = SaveFileController;
+    window.ZinOS.Desktop.SaveFileController = saveFileController;
 })();

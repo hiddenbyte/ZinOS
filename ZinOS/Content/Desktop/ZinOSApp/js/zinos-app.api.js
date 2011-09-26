@@ -1,5 +1,29 @@
-﻿var ZinOSApp = function (windowObj, zinOSdesktopController) {
+﻿(function () {
+    if (!window.ZinOS)
+        window.ZinOS = {};
 
+    var zinOSAppAPI = new function () {
+        var desktopController;
+
+        var setCurrentDesktopController = function (desktopcontroller) {
+            desktopController = desktopcontroller;
+        };
+
+        var getCurrentDesktopController = function () {
+            return desktopController;
+        };
+
+        this.setCurrentDesktopController = setCurrentDesktopController;
+        this.getCurrentDesktopController = getCurrentDesktopController;
+    };
+
+    window.ZinOS.AppAPI = zinOSAppAPI;
+})();
+
+
+/*
+var ZinOSApp = function (windowObj, zinOSdesktopController) {
+    
     this.UI = new function () {
         this.ShowMessageBox = function (message, title) {
             zinOSdesktopController.ShowMessageBox(message, title ? title : 'ZinOS');
@@ -19,7 +43,6 @@
 
         this.UploadFileDialog = function (path, onfileselect) {
             zinOSdesktopController.UploadFile(path, function (selectedFile) {
-
                 var file = {
                     name: selectedFile.name, //File.name
                     lastModifiedDate: selectedFile.lastModifiedDate, //File.lastModifiedDate
@@ -27,7 +50,6 @@
                     type: selectedFile.type, //Blob.size
                     rawFile: selectedFile //File
                 };
-
                 onfileselect(file);
             });
         };
@@ -118,7 +140,6 @@
             });
         };
 
-
         this.GetPartUrl = function (path) {
             return '/Desktop/DesktopFileSystem/GetFileContent?filePath={0}'.format(path);
         };
@@ -134,4 +155,4 @@
             return formatted;
         };
     };
-};
+};*/

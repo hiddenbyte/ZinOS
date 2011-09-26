@@ -1,4 +1,5 @@
 ﻿(function () {
+
     var Model = new function () {
         this.init = function () { };
 
@@ -54,7 +55,28 @@
         };
 
         this.LoginError = function () {
-            alert('error');
+            $("#login-control").children('.logging-in').remove();
+            $("#login-control").children().show();
+            $("#login-control").children('input').addClass('wrongLogin');
+
+            $("#login-control").animate({
+                right: '155px'
+            }, 120, null, function () {
+                $("#login-control").animate({
+                    right: '145px'
+                }, 120, null, function () {
+                    $("#login-control").animate({
+                        right: '150px'
+                    }, 120, null, function () {
+                        $("#login-control").css({ right: '150px' });
+                    });
+                });
+            });
+        };
+
+        this.LoggingIn = function () {
+            $("#login-control").children().hide();
+            $("#login-control").append('<div class="logging-in">logging in...<div>');
         };
     } ();
 
@@ -68,6 +90,7 @@
         };
 
         var onClickLoginButton = function (username, password) {
+            View.LoggingIn();
             Model.Login(username, password, function (success) {
                 if (success) {
                     View.LoggedIn();

@@ -67,7 +67,9 @@
     <Compile Include="DesktopFileSystem\LocalFileSystemProvider.cs" />
     <Compile Include="Dropbox\DropboxImpl.cs" />
     <Compile Include="FileSystemServiceImpl.cs" />
-    <Compile Include="GoogleCajaServiceImpl.cs" />
+    <Compile Include="GoogleCajaService\CajoleResult.cs" />
+    <Compile Include="GoogleCajaService\GoogleCajaServiceImpl.cs" />
+    <Compile Include="GoogleCajaService\Message.cs" />
     <Compile Include="UserDropboxAccountServiceImpl.cs" />
     <Compile Include="UserImpl.cs" />
     <Compile Include="ZinOSAppServiceImpl.cs" />
@@ -95,7 +97,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="ManifestSchema.xsd">
+    <None Include="XmlSchemas\ManifestSchema.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

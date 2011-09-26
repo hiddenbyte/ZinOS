@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ZinOS.Services.Definitions.DesktopFileSystem;
 using ZinOS.Services.Definitions.Types;
 
 namespace ZinOS.Services.Definitions
@@ -34,7 +35,7 @@ namespace ZinOS.Services.Definitions
 
         bool UpdateFileStream(string accessToken, string accessTokenSecret, string path, byte[] fileContent);
 
-        bool CreateFile(string accessToken, string accessTokenSecret, string filePath, Stream fileStream);
+        string CreateFile(string accessToken, string accessTokenSecret, string filePath, Stream fileStream);
 
         bool CreateDirectory(string accessToken, string accessTokenSecret, string dirPath);
 

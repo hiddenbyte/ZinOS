@@ -2,6 +2,7 @@
 using ZinOS.Services.Definitions;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth.ChannelElements;
+using ZinOS.Services.Definitions.Users;
 
 namespace ZinOS.OAuth 
 {

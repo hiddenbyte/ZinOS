@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ZinOS.Services.Definitions;
 using System.Collections.Concurrent;
 using System.IO;
 using ZinOS.Services.Definitions.DesktopFileSystem;
@@ -24,7 +23,7 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
         #region DesktopFileSystem members
 
         public IEnumerable<FileSystemItem> GetDesktopRootDirectories(int desktopId)
-        {
+            {
             var roots = new List<FileSystemItem>();
 
             var providers = _fileSystemProviders.Values;
@@ -75,6 +74,14 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
             return GetPathProvider(filePath, out provider) && provider.UpdateFile(desktopId, filePath, fileContent);
         }
 
+        public string CreateFile(int destkopId, string targetFileNamePath, byte[] fileData)
+        {
+            IDesktopFileSystemProvider provider;
+            if (!GetPathProvider(targetFileNamePath, out provider))
+                return null;
+            return provider.CreateFile(destkopId, targetFileNamePath, new MemoryStream(fileData, false));
+        }
+
         public bool UpdateFile(int desktopId, string filePath, string fileContent)
         {
             IDesktopFileSystemProvider provider;
@@ -86,10 +93,12 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
             return false;
         }
 
-        public bool CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
+        public string CreateFile(int desktopId, string targetPath, string fileName, Stream fileStream)
         {
-            IDesktopFileSystemProvider provider;   
-            return GetPathProvider(targetPath, out provider) && provider.CreateFile(desktopId, targetPath, fileName, fileStream);
+            IDesktopFileSystemProvider provider;
+            if (!GetPathProvider(targetPath, out provider))
+                return null;
+            return provider.CreateFile(desktopId, targetPath, fileName, fileStream);
         }
 
         public bool CreateDirectory(int desktopId, string dirPath)
@@ -102,6 +111,15 @@ namespace ZinOS.Services.Implementation.DesktopFileSystem
         {
             IDesktopFileSystemProvider provider;
             return GetPathProvider(filePath, out provider) && provider.DeleteFile(desktopId, filePath);
+        }
+
+        public bool PrepareFileSystem(int desktopId)
+        {
+            var providers = _fileSystemProviders.Values;
+            bool result = true;
+            foreach (var provider in providers)
+                result &= provider.PrepareFileSystem(desktopId);
+            return result;
         }
 
         #endregion

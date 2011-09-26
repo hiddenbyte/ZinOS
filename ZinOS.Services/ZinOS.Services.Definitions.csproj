@@ -41,19 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AuthenticationTicket.cs" />
+    <Compile Include="GoogleCaja\ICajoleMessage.cs" />
+    <Compile Include="GoogleCaja\ICajoleResult.cs" />
     <Compile Include="GoogleCaja\IGoogleCajaService.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="IFileSystemService.cs" />
-    <Compile Include="IUserDropboxAccountService.cs" />
+    <Compile Include="Users\IUserDropboxAccountService.cs" />
     <Compile Include="IZinOSDesktopDropboxAccount.cs" />
-    <Compile Include="Types\FileSytemItem.cs" />
+    <Compile Include="DesktopFileSystem\FileSytemItem.cs" />
     <Compile Include="Dropbox\IDropboxService.cs" />
     <Compile Include="DesktopFileSystem\IDesktopFileSystemProvider.cs" />
     <Compile Include="Types\OAuthEnpoints.cs" />
-    <Compile Include="User\IUserService.cs" />
+    <Compile Include="Users\IUserService.cs" />
     <Compile Include="DesktopFileSystem\IDesktopFileSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidationException.cs" />
+    <Compile Include="Types\ValidationException.cs" />
     <Compile Include="IZinOSAppService.cs" />
     <Compile Include="IZinOSDesktopService.cs" />
   </ItemGroup>

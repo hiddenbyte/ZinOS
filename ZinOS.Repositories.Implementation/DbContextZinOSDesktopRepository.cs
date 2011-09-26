@@ -25,5 +25,28 @@ namespace ZinOS.Repositories.Implementation
                 return query.ToList();
             }
         }
+
+        public void InstallApp(int desktopId, ZinOSApp app)
+        {
+             using (var context = CurrentContext)
+             {
+                 var desktop = context.ZinOSDesktop.Find(desktopId);
+                 desktop.InstalledApps.Add(app);
+                 context.Entry(desktop).State = EntityState.Modified;
+                 context.SaveChanges();
+             }
+        }
+
+        public void UninstallApp(int desktopId, int appId)
+        {
+            using (var context = CurrentContext)
+            {
+                var desktop = context.ZinOSDesktop.Find(desktopId);
+                var app = desktop.InstalledApps.SingleOrDefault((innerApp) => innerApp.Id == appId);
+                desktop.InstalledApps.Remove(app);
+                context.Entry(desktop).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }

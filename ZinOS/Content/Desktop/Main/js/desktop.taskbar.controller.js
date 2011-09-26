@@ -4,7 +4,7 @@
     if (!window.ZinOS.Desktop)
         window.ZinOS.Desktop = {};
 
-    var taskBarController = function (taskBarView, myAppsView, zinOSInstallationView, zinOsDesktopModel) {
+    var taskBarController = function (taskBarView, myAppsView, zinOSInstallationView, removeAppsView, zinOsDesktopModel) {
         //ShowMyApps
         taskBarView.SetMyAppsOnClickHandler(function () {
             zinOsDesktopModel.GetInstalledApps(function (apps) {
@@ -27,6 +27,13 @@
         //Exit or LeaveDestkop
         taskBarView.SetExitOnClickHandler(function () {
             window.location = '/Dashboard';
+        });
+
+        //RemoveApps
+        taskBarView.SetRemoveAppsClickHandler(function () {
+            zinOsDesktopModel.GetInstalledApps(function (apps) {
+                removeAppsView.ShowApps(apps);
+            });
         });
     };
 

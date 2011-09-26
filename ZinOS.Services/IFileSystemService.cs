@@ -11,8 +11,16 @@ namespace ZinOS.Services.Definitions
         /// <param name="root">Root path</param>
         /// <param name="path">Must be relative to the path returned by the GetRootPath method</param>
         /// <param name="fileStream">a stream representing the file data</param>
-        void Save(FileSystemRoot root,string path, Stream fileStream);
-        
+        void UpdateFile(FileSystemRoot root,string path, Stream fileStream);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileSystemRoot"></param>
+        /// <param name="desktopTargetFileNamePath"></param>
+        /// <param name="fileStream"></param>
+        string CreateFile(FileSystemRoot fileSystemRoot, string desktopTargetFileNamePath, Stream fileStream);
+
         /// <summary>
         /// 
         /// </summary>
