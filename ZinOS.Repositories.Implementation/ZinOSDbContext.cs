@@ -17,7 +17,7 @@ namespace ZinOS.Repositories.Implementation
         public DbSet<ZinOSApp> ZinOSApps { get; set; }
         public DbSet<ZinOSDesktop> ZinOSDesktop { get; set; }
 
-        public ZinOSDbContext(DbContextUnitOfWorkFactory unitOfWorkFactory) : base("dbac6c8255c2c24468b6e79f9e0001311f")
+        public ZinOSDbContext(DbContextUnitOfWorkFactory unitOfWorkFactory)
         
         {
             _nestingLevel = 0;
