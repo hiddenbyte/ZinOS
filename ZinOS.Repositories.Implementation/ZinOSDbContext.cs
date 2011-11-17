@@ -17,7 +17,7 @@ namespace ZinOS.Repositories.Implementation
         public DbSet<ZinOSApp> ZinOSApps { get; set; }
         public DbSet<ZinOSDesktop> ZinOSDesktop { get; set; }
 
-        public ZinOSDbContext(DbContextUnitOfWorkFactory unitOfWorkFactory)
+        public ZinOSDbContext(DbContextUnitOfWorkFactory unitOfWorkFactory) : base("dbac6c8255c2c24468b6e79f9e0001311f")
         
         {
             _nestingLevel = 0;
@@ -30,7 +30,6 @@ namespace ZinOS.Repositories.Implementation
         {
             (new UserEntityConfiguration()).Configure(modelBuilder);
             (new ZinOSDesktopEntityConfiguration()).Configure(modelBuilder);
-
             base.OnModelCreating(modelBuilder);
         }
 
