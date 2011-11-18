@@ -20,7 +20,7 @@ namespace ZinOS.Configuration.Ninject
 
             Bind<IUnitOfWorkFactory>().To<DbContextUnitOfWorkFactory>().InSingletonScope();
 
-            ZinOSDbContext.SetInitiliazer();
+            //ZinOSDbContext.SetInitiliazer();
        }
     }
 }

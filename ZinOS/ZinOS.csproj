@@ -210,7 +210,9 @@
     <Content Include="Scripts\jquery.ui-1.8.24-innocent\jquery.ui.resizable.innocent.js" />
     <Content Include="Scripts\jquery.ui-1.8.24-innocent\jquery.ui.tabs.innocent.js" />
     <Content Include="Scripts\jquery.ui-1.8.24-innocent\jquery.ui.widget.innocent.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
