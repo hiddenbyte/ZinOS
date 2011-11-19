@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<zinosApp>
+        <name>Notepad</name>
+		<description>simple text editor</description>
+        <version>1</version>
+</zinosApp>

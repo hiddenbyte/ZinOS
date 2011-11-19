@@ -1,0 +1,159 @@
+#filemanager
+{
+	font-family:Arial,Verdana;
+	font-size:12px;
+	min-width:520px;
+	height:auto;
+	overflow:hidden;
+}
+
+.back, .root, .upload, .newdir
+{
+	width:98px;
+	height:16px;
+	background-color:#EDEDED;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin: 2px 2px 2px 2px;
+}
+
+.back:hover, .root:hover, .upload:hover, .newdir:hover
+{
+	cursor:pointer;
+}
+
+.root-content
+{
+	float:left;
+	min-height:200px;
+	max-height:200px;
+	min-width:400px;
+	overflow:scroll;
+	background-color:#EDEDED;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+.roots
+{
+	float:left;
+	max-width:100px;
+	min-width:100px;
+	min-height:200px;
+	max-height:200px;
+}
+
+.back > span.back-name, .root > span.root-name, .upload > span.upload-name, .newdir > span.newdir-name
+{
+	display:block;
+	float:left;
+	height:16px;
+	width:auto;
+}
+
+div.file
+{
+	height:20px;
+	width:100%;
+}
+
+div.file > div.file-name
+{
+	float:left;
+	width:auto;
+	height:16px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+div.file > div.file-name > span.dir-icon, 
+div.file > div.file-name > span.file-icon,
+.root > span.drive-icon,
+.back > span.back-icon,
+.upload > span.upload-icon,
+.newdir > span.newdir-icon
+{
+	display:block;
+	float:left;
+	height:16px;
+	width:16px;
+	margin-right:2px;
+	margin-left:2px;
+	background-repeat: no-repeat;
+}
+
+.root > span.drive-icon
+{
+	background-image: url('images/drive.png');
+}
+
+.upload > span.upload-icon
+{
+	background-image: url('images/page_save.png');
+}
+
+.back > span.back-icon
+{
+	background-image: url('images/back.png');
+}
+
+.newdir > span.newdir-icon
+{
+	background-image: url('images/dir_add.png');
+}
+
+div.file:hover
+{
+	cursor:pointer;
+}
+
+div.file > div.file-name > span.file-icon
+{
+	background-image: url('images/file.png');
+}
+div.file > div.file-name > span.dir-icon
+{
+	background-image: url('images/dir.png');
+}
+
+span.file-del-icon
+{
+	background-image: url('images/file_del.png');
+}
+
+span.file-edit-icon
+{
+	background-image: url(images/file_open.png);
+}
+
+div.file > div.file-name > span.name
+{
+	display:block;
+	float:left;
+	height:16px;
+	width:auto;
+	font-family:Arial,Verdana;
+	font-size:12px;
+}
+
+div.file > div.file-actions
+{
+	float:right;
+	width:auto;
+	height:16px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+div.file-actions > span.file-action
+{
+	display:inline-block;
+	height:16px;
+	width:16px;
+}

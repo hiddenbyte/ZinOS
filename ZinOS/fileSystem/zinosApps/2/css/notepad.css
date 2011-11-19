@@ -1,0 +1,47 @@
+div#notepad
+{
+	font-family:Arial,Verdana;
+	font-size:12px;
+	width:100%;
+	height:100%;
+}
+
+textarea#notepad_text
+{
+	height:95%;
+	max-height:95%;
+	min-height:95%;
+	width:100%;
+	max-width:100%;
+	min-width:100%;
+	font-size:14px;
+	padding: 0px 0px 0px 0px;
+}
+
+textarea#notepad_text:focus
+{
+}
+
+div#menu > div.option
+{
+	background-color:#D5D5D5;
+	color:white;
+	width:100px;
+	max-height:5%;
+	text-align:center;
+	margin-left:2px;
+	margin-right:2px;
+}
+
+div#menu > div.option:hover
+{
+	cursor:pointer;
+}
+
+div#menu 
+{
+	height:auto;
+	width:100%;
+	margin-top:2px;
+	margin-bottom:2px;
+}
