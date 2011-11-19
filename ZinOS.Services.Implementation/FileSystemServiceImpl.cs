@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Web;
 using ZinOS.Common;
 using ZinOS.Services.Definitions;
 
@@ -14,9 +16,13 @@ namespace ZinOS.Services.Implementation
 
         public FileSystemServiceImpl()
         {
+            var appRootPath = HttpContext.Current.Request.PhysicalApplicationPath;
+
+            Debug.Assert(appRootPath != null, "appRootPath != null");
+
             _rootAbsolutePath = new Dictionary<FileSystemRoot, string>
             {
-                { FileSystemRoot.Main, ApplicationSettings.Setting.ZinOSFileSystemRootPath },
+                { FileSystemRoot.Main, Path.Combine(appRootPath,"fileSystem") },
                 { FileSystemRoot.Temporary,  @"C:\zinOS\tempPath\"}
             };
         }
