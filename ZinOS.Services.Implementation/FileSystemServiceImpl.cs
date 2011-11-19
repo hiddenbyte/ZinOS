@@ -16,7 +16,7 @@ namespace ZinOS.Services.Implementation
 
         public FileSystemServiceImpl()
         {
-            var appRootPath = HttpContext.Current.Request.PhysicalApplicationPath;
+            var appRootPath = HttpContext.Current.Request.MapPath("~");
 
             Debug.Assert(appRootPath != null, "appRootPath != null");
 
