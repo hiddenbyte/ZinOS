@@ -22,7 +22,7 @@ namespace ZinOS.Services.Implementation
 
             _rootAbsolutePath = new Dictionary<FileSystemRoot, string>
             {
-                { FileSystemRoot.Main, Path.Combine(appRootPath,"fileSystem") },
+                { FileSystemRoot.Main, Path.Combine(appRootPath,"Content","fileSystem") },
                 { FileSystemRoot.Temporary,  @"C:\zinOS\tempPath\"}
             };
         }

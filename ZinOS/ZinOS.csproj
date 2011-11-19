@@ -245,9 +245,9 @@
   <ItemGroup>
     <Folder Include="Areas\Desktop\Models\" />
     <Folder Include="Areas\Desktop\Views\Shared\" />
+    <Folder Include="Content\fileSystem\desktop\localFileSystem\" />
+    <Folder Include="Content\fileSystem\zinosApps\" />
     <Folder Include="Content\Home\" />
-    <Folder Include="fileSystem\desktop\localFileSystem\" />
-    <Folder Include="fileSystem\zinosApps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Desktop\Views\Web.config" />
@@ -325,7 +325,7 @@
     <Content Include="Views\Developers\QuickStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fileSystem\xmlSchemas\ManifestSchema.xsd">
+    <None Include="Content\fileSystem\xmlSchemas\ManifestSchema.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
