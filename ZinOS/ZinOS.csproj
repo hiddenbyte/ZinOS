@@ -246,6 +246,8 @@
     <Folder Include="Areas\Desktop\Models\" />
     <Folder Include="Areas\Desktop\Views\Shared\" />
     <Folder Include="Content\Home\" />
+    <Folder Include="fileSystem\desktop\localFileSystem\" />
+    <Folder Include="fileSystem\zinosApps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Desktop\Views\Web.config" />
@@ -321,6 +323,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Developers\QuickStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fileSystem\xmlSchemas\ManifestSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
