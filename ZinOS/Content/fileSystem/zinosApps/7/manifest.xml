@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<zinosApp>
+        <name>FileManager</name>
+		<description>file manager app</description>
+        <version>1</version>
+		<ui>
+			<icon>images/icon.png</icon>
+			<window>
+				<defaultWidth>560</defaultWidth>
+				<defaultHeight>280</defaultHeight>
+				<resizable>false</resizable>
+			</window>
+		</ui>
+</zinosApp>

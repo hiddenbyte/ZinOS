@@ -9,6 +9,8 @@ namespace ZinOS.Services.Implementation.GoogleCajaService
 {
     public class GoogleCajaServiceImpl : IGoogleCajaService
     {
+        private const string FATAL_ERROR = "FATAL_ERROR";
+
         private static string GoogleCajaServiceAddress
         {
             get { return ApplicationSettings.Setting.GoogleCajaServiceAdresss; }
@@ -33,6 +35,14 @@ namespace ZinOS.Services.Implementation.GoogleCajaService
 
             var serializer = new JavaScriptSerializer();
             var cajoleResult = serializer.Deserialize<CajoleResult>(cajoleResultJSON);
+
+            foreach (var message in cajoleResult.CajolingMessages) 
+            {
+                if (message.Name == FATAL_ERROR) 
+                {
+                    throw new ValidationException("google-caja", "Error occurred while connecting or during request to google caja service.");
+                }
+            }
 
             return cajoleResult;
         }
