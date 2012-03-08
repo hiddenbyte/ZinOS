@@ -1,5 +1,0 @@
-D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data\bin\Debug\ZinOS.Data.dll
-D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data\bin\Debug\ZinOS.Data.pdb
-D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data\obj\Debug\ResolveAssemblyReference.cache
-D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data\obj\Debug\ZinOS.Data.dll
-D:\development\ZinOS\ZinOS_Prototype\ZinOS.Data\obj\Debug\ZinOS.Data.pdb

@@ -32,22 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppLimit.CloudComputing.oAuth.Net40">
-      <HintPath>SharpBox-1.0.3-261\AppLimit.CloudComputing.oAuth.Net40.dll</HintPath>
+      <HintPath>..\external.libraries\SharpBox-1.0.3-261\AppLimit.CloudComputing.oAuth.Net40.dll</HintPath>
     </Reference>
     <Reference Include="AppLimit.CloudComputing.SharpBox.Net40">
-      <HintPath>SharpBox-1.0.3-261\AppLimit.CloudComputing.SharpBox.Net40.dll</HintPath>
+      <HintPath>..\external.libraries\SharpBox-1.0.3-261\AppLimit.CloudComputing.SharpBox.Net40.dll</HintPath>
     </Reference>
     <Reference Include="AppLimit.Common.Objects">
-      <HintPath>SharpBox-1.0.3-261\AppLimit.Common.Objects.dll</HintPath>
+      <HintPath>..\external.libraries\SharpBox-1.0.3-261\AppLimit.Common.Objects.dll</HintPath>
     </Reference>
     <Reference Include="AppLimit.Common.Toolkit">
-      <HintPath>SharpBox-1.0.3-261\AppLimit.Common.Toolkit.dll</HintPath>
+      <HintPath>..\external.libraries\SharpBox-1.0.3-261\AppLimit.Common.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\DotNetZip-v1.9\Release\Ionic.Zip.dll</HintPath>
+      <HintPath>..\external.libraries\DotNetZip-v1.9\Debug\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net40">
-      <HintPath>SharpBox-1.0.3-261\Newtonsoft.Json.Net40.dll</HintPath>
+      <HintPath>..\external.libraries\SharpBox-1.0.3-261\Newtonsoft.Json.Net40.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
